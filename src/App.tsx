@@ -1,17 +1,13 @@
-import Test from "./functionalities/test/Test";
-import Button from "./components/Button";
 import "./App.css";
-import Test2 from "./functionalities/test2/Test2";
+import ButtonAction from "./components/Button";
+import Button from "./components/ButtonAction";
 
 function App() {
   return (
-    <div>
-      <Test />
-      <Button text="Registrarme" />
-      <p>este boton se llama directamente desde App.tsx</p>
-      <hr />
-      <Test2 />
-    </div>
+    <>
+      <Button text="Iniciar con Facebook" />
+      <ButtonAction text="Iniciar con google" />
+    </>
   );
 }
 
