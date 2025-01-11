@@ -1,24 +1,13 @@
-import React, { useState } from "react";
-import styles from "./style.module.css";
+import React from "react";
+import "./style.css";
 
 type Props = {
   text: string;
-  onClick?: () => void;
 };
 
-function Button({ text, onClick }: Props) {
-  const [hovered, setHovered] = useState(false);
-
+function Button({ text }: Props) {
   return (
-    <button
-      type="button"
-      className={`btn btn-primary container-fluid ${
-        hovered ? styles.buttonHover : styles.buttonNoHover
-      }`}
-      onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <button type="button" className="btn btn-primary button">
       {text}
     </button>
   );
