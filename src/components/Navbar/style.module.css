@@ -1,0 +1,29 @@
+.navbar {
+  background-color: rgb(234, 244, 236) !important;
+}
+
+.logo {
+  max-width: 250px;
+  margin: 0 auto;
+  display: block;
+}
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+input {
+  font-family: "ABeeZee", serif !important;
+}
+
+h4 {
+  color: rgb(210, 210, 210) !important;
+}
+
+@media (max-width: 992px) {
+  .search-bar {
+    width: 100%;
+  }
+}

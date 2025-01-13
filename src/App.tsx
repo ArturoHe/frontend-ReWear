@@ -1,8 +1,8 @@
 import React from "react";
-import RecoverPassword from "./functionalities/RecoveryPassword";
+import HomePage from "./functionalities/HomePage";
 
 const App: React.FC = () => {
-  return <RecoverPassword />;
+  return <HomePage />;
 };
 
 export default App;
