@@ -1,0 +1,15 @@
+.buttonNoHover {
+  color: rgb(0, 0, 0) !important;
+  border: 0px !important;
+  border-radius: 30px !important;
+  padding: 0.7rem !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.buttonHover {
+  color: rgb(0, 0, 0) !important;
+  border: 0px !important;
+  border-radius: 30px !important;
+  padding: 0.7rem !important;
+  background-color: rgb(212, 212, 212) !important;
+}

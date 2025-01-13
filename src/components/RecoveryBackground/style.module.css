@@ -1,0 +1,35 @@
+.container {
+  height: 100vh !important;
+}
+
+.leftSection {
+  background-image: url("./fondoIzquierda.jpg");
+  background-size: cover !important;
+  background-position: center !important;
+  height: 100% !important;
+}
+
+.centerSection {
+  background-image: url("./fondoCentro.png");
+  background-size: cover !important;
+  background-position: center !important;
+  height: 100% !important;
+}
+
+.rightSection {
+  background-image: url("./fondoDerecha.jpg");
+  background-size: cover !important;
+  background-position: center !important;
+  height: 100% !important;
+}
+
+@media (max-width: 765px) {
+  .left-section,
+  .right-section {
+    display: none !important;
+  }
+
+  .center-section {
+    width: 100% !important; /* Asegurar que la sección central ocupe todo el ancho */
+  }
+}
