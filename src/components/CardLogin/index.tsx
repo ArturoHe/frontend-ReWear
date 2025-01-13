@@ -3,12 +3,13 @@ import Button from "../Button";
 import LoginForm from "../LoginForm";
 import styles from "./style.module.css";
 import RegisterForm from "../RegisterForm";
+import RecoverPassForm from "../RecoverPassForm";
 
 type Props = {};
 
 function CardLogin({}: Props) {
   const [currentView, setCurrentView] = useState<
-    "initial" | "register" | "login"
+    "initial" | "register" | "login" | "recover"
   >("initial");
 
   const handleShowRegistrationForm = () => {
@@ -17,6 +18,9 @@ function CardLogin({}: Props) {
 
   const handleShowLoginForm = () => {
     setCurrentView("login");
+  };
+  const handleShowRecoverForm = () => {
+    setCurrentView("recover");
   };
 
   const handleBackToInitial = () => {
@@ -27,11 +31,7 @@ function CardLogin({}: Props) {
     <div className="d-flex col-sm-8 col-md-8 col-lg-12 col-xl-10">
       <div className={`card shadow ${styles.cardLogin}`}>
         <div className="container-fluid px-5 py-3">
-          <img
-            src="/logoRewearRectanguloNoFondo.png"
-            className="card-img-top"
-            alt="Logo ReWear"
-          />
+          <img src="/logo.png" className="card-img-top" alt="Logo ReWear" />
         </div>
 
         {currentView === "initial" && (
@@ -62,12 +62,20 @@ function CardLogin({}: Props) {
         )}
         {currentView === "register" && (
           <div className="mx-5 mb-3">
-            <RegisterForm onBack={handleBackToInitial} />
+            <RegisterForm onReturn={handleBackToInitial} />
           </div>
         )}
         {currentView === "login" && (
           <div className="mx-5 mb-3">
-            <LoginForm onBack={handleBackToInitial} />
+            <LoginForm
+              onReturn={handleBackToInitial}
+              onRecoverPassword={handleShowRecoverForm}
+            />
+          </div>
+        )}
+        {currentView === "recover" && (
+          <div className="mx-5 mb-3">
+            <RecoverPassForm onReturn={handleBackToInitial} />
           </div>
         )}
       </div>

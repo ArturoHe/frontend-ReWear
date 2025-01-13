@@ -7,7 +7,11 @@ const CardRecovery: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   return (
     <div className={`card text-center shadow p-4 ${styles.card}`}>
-      <img src={logo} alt="ReWear Logo" className={`mb-4 ${styles.logo}`} />
+      <img
+        src="/logo.png"
+        alt="ReWear Logo"
+        className={`mb-4 ${styles.logo}`}
+      />
       <h3 className={styles.h3}>¿Olvidaste tu contraseña?</h3>
       {children}
     </div>
