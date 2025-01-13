@@ -3,11 +3,12 @@ import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 
 type Props = {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  onBack: () => void;
+  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
+  onBack?: () => void;
+  onReturn?: () => void;
 };
 
-function RegisterForm({ onSubmit }: Props) {
+function RegisterForm({ onSubmit, onReturn }: Props) {
   return (
     <form onSubmit={onSubmit}>
       <div className="my-3">
@@ -80,9 +81,17 @@ function RegisterForm({ onSubmit }: Props) {
       </div>
 
       <div className="mt-5">
-        <a href="" style={{ color: "black" }}>
+        <div
+          onClick={onReturn}
+          style={{
+            cursor: "pointer",
+            color: "black",
+            textDecoration: "underline",
+            fontSize: "0.85rem",
+          }}
+        >
           Volver
-        </a>
+        </div>
       </div>
     </form>
   );

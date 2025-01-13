@@ -9,9 +9,10 @@ type Props = {
   onReturn?: () => void;
 };
 
-function LoginForm({ onRecoverPassword, onReturn }: Props) {
+function RecoverPassForm({ onRecoverPassword, onReturn }: Props) {
   return (
     <form>
+      <h4>¿Olvidaste tu contraseña?</h4>
       <div className="my-3">
         <label htmlFor="emailSlot" className="form-label"></label>
         <input
@@ -19,36 +20,12 @@ function LoginForm({ onRecoverPassword, onReturn }: Props) {
           type="email"
           className={`form-control ${styles.loginSlot}`}
           id="emailSlotLogin"
-          placeholder="Correo Electrónico"
+          placeholder="Ingresa tu correo electrónico"
         />
-      </div>
-      <div className="my-3">
-        <label htmlFor="passwordSlot" className="form-label"></label>
-        <input
-          required
-          type="password"
-          className={`form-control ${styles.loginSlot}`}
-          id="passwordSlotLogin"
-          placeholder="Contraseña"
-        />
-      </div>
-
-      <div className="my-3">
-        <div
-          onClick={onRecoverPassword}
-          style={{
-            cursor: "pointer",
-            color: "black",
-            textDecoration: "underline",
-            fontSize: "0.85rem",
-          }}
-        >
-          ¿Olvidaste tu contraseña?
-        </div>
       </div>
 
       <div>
-        <ButtonAction text="Entrar" type="submit" />
+        <ButtonAction text="Recuperar contraseña" type="submit" />
       </div>
 
       <div className="mt-5">
@@ -68,4 +45,4 @@ function LoginForm({ onRecoverPassword, onReturn }: Props) {
   );
 }
 
-export default LoginForm;
+export default RecoverPassForm;
