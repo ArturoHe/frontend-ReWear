@@ -12,7 +12,7 @@ type Props = {
 function RecoverPassForm({ onRecoverPassword, onReturn }: Props) {
   return (
     <form>
-      <h3>¿Olvidaste tu contraseña?</h3>
+      <h4>¿Olvidaste tu contraseña?</h4>
       <div className="my-3">
         <label htmlFor="emailSlot" className="form-label"></label>
         <input
