@@ -1,11 +1,15 @@
-import React from "react";
-import RecoverPassword from "./functionalities/RecoveryPassword";
-import CardLogin from "./components/CardLogin";
-import LogBackground from "./components/LogBackground";
-import RecoverPassForm from "./components/RecoverPassForm";
+import "./App.css";
 
-const App: React.FC = () => {
-  return <CardLogin />;
-};
+import Login from "./functionalities/Login";
+
+function App() {
+  return (
+    <>
+      <Login />
+    </>
+  );
+}
+
+/*/*/
 
 export default App;
