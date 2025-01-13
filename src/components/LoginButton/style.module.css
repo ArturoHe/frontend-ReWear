@@ -1,0 +1,16 @@
+.button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  width: 180px;
+  font-family: "ABeeZee", serif !important;
+}
+
+.button:hover {
+  background-color: #f8f9fa;
+  color: black;
+  border-color: #adb5bd;
+}
