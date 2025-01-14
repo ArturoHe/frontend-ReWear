@@ -3,7 +3,6 @@ import imageIzq from "./assets/img/fondoIzquierda.jpg";
 import imageCen from "./assets/img/fondoCentro.png";
 import imageDer from "./assets/img/fondoDerecha.jpg";
 import Card from "../CardLogin";
-import Button from "../Button";
 
 const styleIzq = {
   backgroundImage: `url(${imageIzq})`,
