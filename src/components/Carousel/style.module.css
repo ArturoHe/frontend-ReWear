@@ -1,10 +1,10 @@
 .carousel img {
-  max-width: 50%; /* Cambia este valor para ajustar el tamaño */
-  max-height: 50%; /* Define una altura máxima si es necesario */
+  max-width: 90vh;
   margin: auto; /* Centra la imagen */
 }
 
 h3 {
   color: white !important;
+  text-shadow: 2px 2px 2px black;
   font-family: "ABeeZee", serif !important;
 }

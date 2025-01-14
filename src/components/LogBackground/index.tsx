@@ -3,6 +3,7 @@ import imageIzq from "./assets/img/fondoIzquierda.jpg";
 import imageCen from "./assets/img/fondoCentro.png";
 import imageDer from "./assets/img/fondoDerecha.jpg";
 import Card from "../CardLogin";
+import Button from "../Button";
 
 const styleIzq = {
   backgroundImage: `url(${imageIzq})`,
@@ -23,7 +24,6 @@ const LogBackground = () => {
   return (
     <div className="container-fluid">
       <div>
-        <div></div>
         <div className="row">
           <div
             className={`col col-lg-4 p-0 d-none d-lg-block ${styles.colo}`}

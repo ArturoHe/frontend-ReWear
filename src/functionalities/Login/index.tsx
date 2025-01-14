@@ -1,11 +1,16 @@
 import "./style.css";
-
 import LogBackground from "../../components/LogBackground";
+import { useEffect } from "react";
 
-type Props = {};
+type Props = {
+  title: string;
+};
 
-function index({}: Props) {
+function Login({ title }: Props) {
+  useEffect(() => {
+    document.title = title;
+  });
   return <LogBackground />;
 }
 
-export default index;
+export default Login;

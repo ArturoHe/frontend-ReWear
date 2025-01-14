@@ -1,11 +1,16 @@
 import React from "react";
-import RegisterButton from "../RegisterButton";
-import LoginButton from "../LoginButton";
+
 import styles from "./style.module.css";
 import logo from "./logo.png";
 import lupa from "./lupa.png";
+import ButtonAction from "../ButtonAction";
+import Button from "../Button";
 
 const Navbar: React.FC = () => {
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
+
   return (
     <nav className={`${styles.navbar} navbar navbar-expand-lg`}>
       <div className="container-fluid">
@@ -20,7 +25,7 @@ const Navbar: React.FC = () => {
               placeholder="¿Qué estás buscando?"
               aria-label="Search"
             />
-            <h4>|</h4>
+            <div style={{ color: "gray", fontSize: "1.5rem" }}>|</div>
             <button
               className="input-group-text bg-white border-0 rounded-pill"
               type="submit"
@@ -47,8 +52,12 @@ const Navbar: React.FC = () => {
           className="collapse navbar-collapse d-md-flex justify-content-end"
           id="navbarButtons"
         >
-          <RegisterButton />
-          <LoginButton />
+          <div>
+            <ButtonAction text="Crea tu cuenta" onClick={handleLogin} />
+          </div>
+          <div className="mx-5">
+            <Button text="Entra a tu cuenta" onClick={handleLogin} />
+          </div>
         </div>
       </div>
     </nav>
