@@ -23,7 +23,6 @@ const LogBackground = () => {
   return (
     <div className="container-fluid">
       <div>
-        <div></div>
         <div className="row">
           <div
             className={`col col-lg-4 p-0 d-none d-lg-block ${styles.colo}`}

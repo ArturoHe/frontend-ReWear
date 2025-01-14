@@ -4,14 +4,15 @@ import styles from "./style.module.css";
 type Props = {
   text: string;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset"; // Tipo de botón
 };
 
-function Button({ text, onClick }: Props) {
+function Button({ text, onClick, type = "button" }: Props) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <button
-      type="button"
+      type={type}
       className={`btn btn-primary container-fluid ${
         hovered ? styles.buttonHover : styles.buttonNoHover
       }`}

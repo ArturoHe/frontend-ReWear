@@ -9,7 +9,7 @@ const Carousel: React.FC = () => {
   return (
     <div
       id="carouselExampleCaptions"
-      className={`carousel slide mt-5 ${styles.carousel}`}
+      className={`carousel slide mt-4 ${styles.carousel}`}
     >
       <div className="carousel-indicators">
         <button
