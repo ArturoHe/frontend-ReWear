@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./style.module.css";
 import imageIzq from "./assets/img/fondoIzquierda.jpg";
 import imageCen from "./assets/img/fondoCentro.png";
@@ -20,9 +19,7 @@ const styleDer = {
   backgroundSize: "cover",
 };
 
-type Props = {};
-
-const LogBackground = (props: Props) => {
+const LogBackground = () => {
   return (
     <div className="container-fluid">
       <div>

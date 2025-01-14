@@ -5,11 +5,10 @@ import styles from "./style.module.css";
 type Props = {
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   onBack?: () => void;
-  onRecoverPassword?: () => void;
   onReturn?: () => void;
 };
 
-function RecoverPassForm({ onRecoverPassword, onReturn }: Props) {
+function RecoverPassForm({ onReturn }: Props) {
   return (
     <form>
       <h4>¿Olvidaste tu contraseña?</h4>
