@@ -11,7 +11,11 @@ type Props = {
 
 function LoginForm({ onRecoverPassword, onReturn }: Props) {
   return (
-    <form>
+    <form
+      method="POST"
+      action="https://backend-rewear-production.up.railway.app/login
+"
+    >
       <div className="my-3">
         <label htmlFor="emailSlot" className="form-label"></label>
         <input

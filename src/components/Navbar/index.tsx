@@ -5,6 +5,9 @@ import styles from "./style.module.css";
 type Props = {};
 
 function index({}: Props) {
+  const handleLogin = () => {
+    window.location.href = "/login";
+  };
   return (
     <nav
       className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}
@@ -46,10 +49,10 @@ function index({}: Props) {
           <div className="container text-center">
             <div className="row align-items-start">
               <div className="col">
-                <ButtonAction text="Crear cuenta" />
+                <ButtonAction text="Crear cuenta" onClick={handleLogin} />
               </div>
               <div className="col">
-                <Button text="iniciar Sesión" />
+                <Button text="iniciar Sesión" onClick={handleLogin} />
               </div>
             </div>
           </div>
