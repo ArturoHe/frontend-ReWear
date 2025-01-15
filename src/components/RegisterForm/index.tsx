@@ -10,8 +10,49 @@ type Props = {
 
 function RegisterForm({ onSubmit, onReturn }: Props) {
   return (
-    <form onSubmit={onSubmit}>
-      <div className="my-3">
+    <form
+      onSubmit={onSubmit}
+      method="POST"
+      action="https://backend-rewear-production.up.railway.app/register
+"
+    >
+      <div className="my-2">
+        <label htmlFor="firstNameSlot" className="form-label"></label>
+        <input
+          required
+          name="first_name"
+          type="text"
+          className={`form-control ${styles.loginSlot}`}
+          id="firstNameSlotRegister"
+          placeholder="Nombre(s)"
+        />
+      </div>
+
+      <div className="my-2">
+        <label htmlFor="lastNameSlot" className="form-label"></label>
+        <input
+          required
+          name="last_name"
+          type="text"
+          className={`form-control ${styles.loginSlot}`}
+          id="lastNameSlotRegister"
+          placeholder="Apellido(s)"
+        />
+      </div>
+
+      <div className="my-2">
+        <label htmlFor="phoneSlot" className="form-label"></label>
+        <input
+          required
+          name="phone"
+          type="phone"
+          className={`form-control ${styles.loginSlot}`}
+          id="phoneSlotRegister"
+          placeholder="Numero de telefono"
+        />
+      </div>
+
+      <div className="my-2">
         <label htmlFor="emailSlot" className="form-label"></label>
         <input
           required
@@ -23,19 +64,7 @@ function RegisterForm({ onSubmit, onReturn }: Props) {
         />
       </div>
 
-      <div className="my-3">
-        <label htmlFor="userSlot" className="form-label"></label>
-        <input
-          required
-          name="user"
-          type="text"
-          className={`form-control ${styles.loginSlot}`}
-          id="userSlotRegister"
-          placeholder="Nombre de Usuario"
-        />
-      </div>
-
-      <div className="my-3">
+      <div className="my-2">
         <label htmlFor="passwordSlot" className="form-label"></label>
         <input
           required
@@ -47,19 +76,7 @@ function RegisterForm({ onSubmit, onReturn }: Props) {
         />
       </div>
 
-      <div className="my-3">
-        <label htmlFor="passwordSlot" className="form-label"></label>
-        <input
-          required
-          name="passwordCheck"
-          type="password"
-          className={`form-control ${styles.loginSlot}`}
-          id="passwordCheckSlotRegister"
-          placeholder="Confirma tu Contraseña"
-        />
-      </div>
-
-      <div className="my-3 form-check">
+      <div className="mt-3 form-check">
         <input
           required
           type="checkbox"
