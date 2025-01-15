@@ -20,6 +20,7 @@ function LoginForm({ onRecoverPassword, onReturn }: Props) {
         <label htmlFor="emailSlot" className="form-label"></label>
         <input
           required
+          name="email"
           type="email"
           className={`form-control ${styles.loginSlot}`}
           id="emailSlotLogin"
@@ -30,6 +31,7 @@ function LoginForm({ onRecoverPassword, onReturn }: Props) {
         <label htmlFor="passwordSlot" className="form-label"></label>
         <input
           required
+          name="password"
           type="password"
           className={`form-control ${styles.loginSlot}`}
           id="passwordSlotLogin"
