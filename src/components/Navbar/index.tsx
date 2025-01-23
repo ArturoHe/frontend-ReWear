@@ -1,6 +1,7 @@
 import Button from "../Button";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
+import { IoIosSearch } from "react-icons/io";
 
 type Props = {};
 
@@ -13,7 +14,7 @@ function index({}: Props) {
       className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <img
             src="./logo.png"
             alt="Logo Rewear"
@@ -42,7 +43,11 @@ function index({}: Props) {
                 placeholder="¿Qué estás buscando?"
                 aria-label="Search"
               />
-              <button className="btn " type="submit"></button>
+              <button className="btn " type="submit">
+                <div style={{ fontSize: "1.5rem" }}>
+                  <IoIosSearch />
+                </div>
+              </button>
             </div>
           </form>
 
