@@ -8,17 +8,11 @@ type Props = {
 };
 
 function ButtonAction({ text, onClick, type = "button" }: Props) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <button
       type={type}
-      className={`btn btn-primary container-fluid ${
-        hovered ? styles.buttonHover : styles.buttonNoHover
-      }`}
+      className={`btn btn-primary container-fluid ${styles.button}`}
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       {text}
     </button>
