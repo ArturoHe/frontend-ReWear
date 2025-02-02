@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../Button";
 import ButtonAction from "../ButtonAction";
+import styles from "./style.module.css";
 
 type Props = {};
 
@@ -8,7 +9,7 @@ function EditUserForm({}: Props) {
   return (
     <>
       <div>
-        <h3>Información Personal</h3>
+        <h3 className={`${styles.title}`}>Información Personal</h3>
         <hr />
         <form>
           <div className="container text-center">
@@ -17,7 +18,7 @@ function EditUserForm({}: Props) {
                 <div className="mb-3">
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control ${styles.input}`}
                     id="username"
                     aria-describedby="username"
                     placeholder="Nuevo nombre de usuario"
@@ -33,7 +34,7 @@ function EditUserForm({}: Props) {
       </div>
 
       <div>
-        <h3>Contraseña</h3>
+        <h3 className={`${styles.title}`}>Contraseña</h3>
         <hr />
 
         <form>
@@ -43,7 +44,7 @@ function EditUserForm({}: Props) {
                 <div className="mb-3">
                   <input
                     type="password"
-                    className="form-control"
+                    className={`form-control ${styles.input}`}
                     id="actualpassword"
                     aria-describedby="actualpassword"
                     placeholder="Contraseña Actual"
@@ -52,7 +53,7 @@ function EditUserForm({}: Props) {
                 <div className="mb-3">
                   <input
                     type="password"
-                    className="form-control"
+                    className={`form-control ${styles.input}`}
                     id="newpassword"
                     aria-describedby="newpassword"
                     placeholder="Contraseña Actual"
@@ -61,7 +62,7 @@ function EditUserForm({}: Props) {
                 <div className="mb-3">
                   <input
                     type="password"
-                    className="form-control"
+                    className={`form-control ${styles.input}`}
                     id="password"
                     aria-describedby="password"
                     placeholder="Contraseña Actual"
@@ -78,7 +79,7 @@ function EditUserForm({}: Props) {
       </div>
 
       <div>
-        <h3>Imagen de perfil</h3>
+        <h3 className={`${styles.title}`}>Imagen de perfil</h3>
         <hr />
         <form>
           <div className="container text-center">
@@ -86,7 +87,6 @@ function EditUserForm({}: Props) {
               <div className="col-4">
                 <div className="mb-3">
                   <input
-                    style={{ borderRadius: "30px" }}
                     type="file"
                     name="myImage"
                     accept="image/png, image/gif, image/jpeg"

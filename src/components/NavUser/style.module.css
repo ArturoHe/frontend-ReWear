@@ -2,6 +2,14 @@
   background-color: rgba(11, 113, 66, 0.5) !important;
 }
 
-.backgroundButton {
-  background-color: rgba(rgba(0, 0, 0, 0), green, blue, alpha);
+.s {
+  background-color: rgba(11, 113, 65, 0) !important;
+  border: none !important;
+  border-radius: 30px !important;
+  text-decoration: none !important;
+}
+
+.s:hover {
+  transition: 0.5s !important;
+  background-color: rgb(255, 255, 255) !important;
 }
