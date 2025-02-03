@@ -6,6 +6,7 @@ import Login from "./functionalities/Login";
 import UserConfig from "./functionalities/UserConfig";
 import User from "./functionalities/User";
 import NewProduct from "./functionalities/ProductCreation";
+import Product from "./functionalities/Product";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           path="/newproduct"
           element={<NewProduct title="ReWear | Product" />}
         />
+        <Route path="/product" element={<Product title="ReWear | Product" />} />
       </Routes>
     </Router>
   );

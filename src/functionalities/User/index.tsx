@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import UserPanelLeft from "../../components/UserPanelLeft";
-import MiniCard from "../../components/MiniCard";
 import PersonalComments from "../../components/PersonalComments";
 import Navbar from "../../components/Navbar";
 import NavUser from "../../components/NavUser";
+import MiniCardProducts from "../../components/MiniCardProducts";
 
 type Props = { title: string };
 
@@ -32,32 +32,32 @@ function index({ title }: Props) {
                   className="d-flex flex-nowrap overflow-auto py-4"
                   style={{ gap: "1rem" }}
                 >
-                  <MiniCard
+                  <MiniCardProducts
                     id="51sdaa4"
                     price={8000}
                     title="Cubeta de Huevos"
                   />
-                  <MiniCard
+                  <MiniCardProducts
                     id="51swaw8"
                     price={8000}
                     title="Cubeta de Huevos"
                   />
-                  <MiniCard
+                  <MiniCardProducts
                     id="51sda8w8"
                     price={8000}
                     title="Cubeta de Huevos"
                   />
-                  <MiniCard
+                  <MiniCardProducts
                     id="51s531daw8"
                     price={8000}
                     title="Cubeta de Huevos"
                   />
-                  <MiniCard
+                  <MiniCardProducts
                     id="51s165daw8"
                     price={8000}
                     title="Cubeta de Huevos"
                   />
-                  <MiniCard
+                  <MiniCardProducts
                     id="51sdfsdaaw8"
                     price={8000}
                     title="Cubeta de Huevos"
