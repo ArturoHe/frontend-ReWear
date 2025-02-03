@@ -2,9 +2,3 @@
   max-width: 90vh;
   margin: auto; /* Centra la imagen */
 }
-
-h3 {
-  color: white !important;
-  text-shadow: 2px 2px 2px black;
-  font-family: "ABeeZee", serif !important;
-}

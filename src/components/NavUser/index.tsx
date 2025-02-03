@@ -9,10 +9,14 @@ function NavUser({}: Props) {
   const icono = <TiShoppingCart />;
 
   return (
-    <nav className={`navbar ${styles.navColorRewear}`}>
+    <nav className={`navbar ${styles.navColorRewear} p-0`}>
       <div className="container-fluid">
         <a className="navbar-brand">
-          <a className={`form-control ${styles.s}`} href="">
+          <a
+            className={`form-control ${styles.s}`}
+            href=""
+            style={{ fontSize: "1.5rem" }}
+          >
             <TiShoppingCart />
           </a>
         </a>
