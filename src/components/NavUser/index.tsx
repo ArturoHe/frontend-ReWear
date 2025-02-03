@@ -1,31 +1,37 @@
-import React from "react";
-import Button from "../Button";
 import styles from "./style.module.css";
 import { TiShoppingCart } from "react-icons/ti";
 
 type Props = {};
 
 function NavUser({}: Props) {
-  const icono = <TiShoppingCart />;
-
   return (
-    <nav className={`navbar ${styles.navColorRewear}`}>
+    <nav className={`navbar ${styles.navColorRewear} p-0`}>
       <div className="container-fluid">
         <a className="navbar-brand">
-          <a href="">
+          <a
+            className={`form-control ${styles.s}`}
+            href=""
+            style={{ fontSize: "1.5rem" }}
+          >
             <TiShoppingCart />
           </a>
         </a>
         <div className="d-flex">
           <div className=" mx-1">
-            <a href="">Inicio</a>
+            <a className={`form-control ${styles.s}`} href="">
+              Inicio
+            </a>
           </div>
 
           <div className=" mx-1">
-            <a href="">Mis Compras</a>
+            <a className={`form-control ${styles.s}`} href="">
+              Mis Compras
+            </a>
           </div>
           <div className=" mx-1">
-            <a href="">Mi Perfil</a>
+            <a className={`form-control ${styles.s}`} href="">
+              Mi Perfil
+            </a>
           </div>
         </div>
       </div>

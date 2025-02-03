@@ -1,7 +1,9 @@
-.navColorRewear {
-  background-color: rgba(11, 113, 66, 0.5) !important;
+.title {
+  color: black !important;
+  text-shadow: none !important;
+  font-size: 1.5rem !important;
 }
 
-.backgroundButton {
-  background-color: rgba(rgba(0, 0, 0, 0), green, blue, alpha);
+.input {
+  border-radius: 30px !important;
 }

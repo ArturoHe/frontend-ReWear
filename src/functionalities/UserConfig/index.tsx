@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import NavUser from "../../components/NavUser";
 import EditUserForm from "../../components/EditUserForm";
@@ -14,7 +14,9 @@ function UserConfig({ title }: Props) {
       <Navbar />
       <NavUser />
       <div className="container">
-        <EditUserForm />
+        <div className="mt-4">
+          <EditUserForm />
+        </div>
       </div>
     </>
   );

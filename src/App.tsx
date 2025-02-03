@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./functionalities/HomePage";
 import Login from "./functionalities/Login";
 import UserConfig from "./functionalities/UserConfig";
+import User from "./functionalities/User";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           path="/usrconfig"
           element={<UserConfig title="ReWear | Configuracion" />}
         />
+
+        <Route path="/user" element={<User title="ReWear | User" />} />
       </Routes>
     </Router>
   );
