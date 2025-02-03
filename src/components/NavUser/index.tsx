@@ -1,13 +1,9 @@
-import React from "react";
-import Button from "../Button";
 import styles from "./style.module.css";
 import { TiShoppingCart } from "react-icons/ti";
 
 type Props = {};
 
 function NavUser({}: Props) {
-  const icono = <TiShoppingCart />;
-
   return (
     <nav className={`navbar ${styles.navColorRewear} p-0`}>
       <div className="container-fluid">

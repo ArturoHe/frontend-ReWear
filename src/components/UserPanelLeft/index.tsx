@@ -1,5 +1,4 @@
 import { FaStar } from "react-icons/fa6";
-import { IoSettingsOutline } from "react-icons/io5";
 
 import ButtonAction from "../ButtonAction";
 import Button from "../Button";
@@ -14,7 +13,7 @@ type Props = {
   self?: boolean;
 };
 
-function index({ profileImage, userName, description, stars, self }: Props) {
+function index({ profileImage, userName, description }: Props) {
   return (
     <div className="container text-center py-3">
       <div className="row row-cols-1">
