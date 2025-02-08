@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import NavUser from "../../components/NavUser";
 import ImagesProductCard from "../../components/ImagesProductCard";
 import UserPanelLeft from "../../components/UserPanelLeft";
 import TextProduct from "../../components/TextProduct";
 
-type Props = {};
+type Props = { title: string };
 
-function index({}: Props) {
+function index({ title }: Props) {
+  useEffect(() => {
+    document.title = title;
+  });
   return (
     <>
       <Navbar />

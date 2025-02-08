@@ -7,12 +7,14 @@ import UserConfig from "./functionalities/UserConfig";
 import User from "./functionalities/User";
 import NewProduct from "./functionalities/ProductCreation";
 import Product from "./functionalities/Product";
+import LandingPage from "./functionalities/LandingPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home title="ReWear | Inicio" />} />
+        <Route path="/" element={<LandingPage title="ReWear | Landing" />} />
+        <Route path="/home" element={<Home title="ReWear | Inicio" />} />
         <Route path="/login" element={<Login title="ReWear | Login" />} />
         <Route
           path="/usrconfig"
