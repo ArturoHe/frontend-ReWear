@@ -35,7 +35,10 @@ const LogBackground = () => {
                 fontSize: "1.5rem",
               }}
             >
-              <a href="/" style={{ color: "black", textDecoration: "none" }}>
+              <a
+                href="/home"
+                style={{ color: "black", textDecoration: "none" }}
+              >
                 <FaRegArrowAltCircleLeft /> Home
               </a>
             </div>
