@@ -51,7 +51,11 @@ function CardLogin({}: Props) {
               </div>
               <div className="mt-5 mb-3">
                 <a
-                  style={{ color: "black", textDecoration: "underline" }}
+                  style={{
+                    color: "black",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                  }}
                   onClick={handleShowRegistrationForm}
                 >
                   Registrarme
