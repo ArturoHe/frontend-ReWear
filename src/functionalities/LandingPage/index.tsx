@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import styles from "./style.module.css";
-import Button from "../../components/Button";
+
 import LandingPageFirst from "../../components/LandingPageFirst";
 import LandingPageSecond from "../../components/LandingPageSecond";
 

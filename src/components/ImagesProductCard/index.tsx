@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = { image: string };
 
 function index({ image }: Props) {

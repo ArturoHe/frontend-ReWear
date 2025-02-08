@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import ProductSearchCard from "../../components/ProductSearchCard";
 import SearchFilters from "../../components/SearchFilters";
 import Navbar from "../../components/Navbar";
