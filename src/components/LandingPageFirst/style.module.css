@@ -1,0 +1,5 @@
+.LandingBackground {
+  background-image: url("landing3.jpg");
+  background-size: cover;
+  height: 100vh;
+}

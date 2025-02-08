@@ -8,12 +8,16 @@ import styles from "./style.module.css";
 type Props = {
   profileImage: string;
   userName: string;
-  description: string;
+  description?: string;
   stars?: number;
   self?: boolean;
 };
 
-function index({ profileImage, userName, description }: Props) {
+function index({ profileImage, userName, description, self }: Props) {
+  if (!description) {
+    description = "No hay descripción";
+  }
+
   return (
     <div className="container text-center py-3">
       <div className="row row-cols-1">
@@ -57,12 +61,16 @@ function index({ profileImage, userName, description }: Props) {
             </div>
           </div>
         </div>
-        <div className="col py-3">
-          <ButtonAction text="Vender nuevo artículo" />
-        </div>
-        <div className="col">
-          <Button text="Configuración" />
-        </div>
+        {self ? (
+          <div id="buttons" className="container">
+            <div className="col py-3">
+              <ButtonAction text="Vender nuevo artículo" />
+            </div>
+            <div className="col">
+              <Button text="Configuración" />
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

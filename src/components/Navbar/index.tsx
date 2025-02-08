@@ -14,7 +14,7 @@ function index({}: Props) {
       className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="/home">
           <img
             src="./logo.png"
             alt="Logo Rewear"
