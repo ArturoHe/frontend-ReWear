@@ -1,6 +1,9 @@
 import React from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
+import axios from "axios";
+import api from "../../api/axiosConfig";
+import { authResponse, LoginResponse } from "../../api/types";
 
 type Props = {
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -9,22 +12,60 @@ type Props = {
   onReturn?: () => void;
 };
 
-function LoginForm({ onRecoverPassword, onReturn }: Props) {
+function LoginForm({ onReturn, onRecoverPassword }: Props) {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      username: formData.get("username"),
+      password: formData.get("password"),
+    };
+    console.log("payload", payload);
+    try {
+      const response = await axios.post<LoginResponse>(
+        "https://backend-rewear-production.up.railway.app/login",
+        payload
+      );
+
+      console.log("response", response);
+      const token = response.data.token;
+
+      const responseId = await api.get<authResponse>("/perfil", {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
+
+      const idUser = responseId.data.id;
+      const username = responseId.data.username;
+
+      if (token) {
+        sessionStorage.setItem("jwtToken", token);
+        sessionStorage.setItem("username", username);
+        sessionStorage.setItem("id", idUser);
+
+        window.location.href = "/home";
+      } else {
+        alert("No se recibió un token");
+      }
+    } catch (error) {
+      console.error("Error en el login", error);
+      alert("Error en el inicio de sesión");
+    }
+  };
+
   return (
-    <form
-      method="POST"
-      action="https://backend-rewear-production.up.railway.app/login
-"
-    >
+    <form onSubmit={handleSubmit}>
       <div className="my-3">
-        <label htmlFor="emailSlot" className="form-label"></label>
+        <label htmlFor="username" className="form-label"></label>
         <input
           required
-          name="email"
-          type="email"
+          name="username"
+          type="text"
           className={`form-control ${styles.loginSlot}`}
           id="emailSlotLogin"
-          placeholder="Correo Electrónico"
+          placeholder="Usuario"
         />
       </div>
       <div className="my-3">
@@ -73,5 +114,4 @@ function LoginForm({ onRecoverPassword, onReturn }: Props) {
     </form>
   );
 }
-
 export default LoginForm;

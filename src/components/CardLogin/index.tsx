@@ -46,9 +46,6 @@ function CardLogin({}: Props) {
               <div className="my-3">
                 <Button text={"Iniciar con Google"} />
               </div>
-              <div>
-                <Button text={"Iniciar con Facebook"} />
-              </div>
               <div className="mt-5 mb-3">
                 <a
                   style={{

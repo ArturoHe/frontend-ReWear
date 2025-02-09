@@ -1,19 +1,54 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import api from "../../api/axiosConfig";
 import ProductSearchCard from "../../components/ProductSearchCard";
 import SearchFilters from "../../components/SearchFilters";
-import Navbar from "../../components/Navbar";
-import NavUser from "../../components/NavUser";
+
+import { Product } from "../../api/types";
+import { useParams } from "react-router-dom";
 
 type Props = { title: string };
 
-function index({ title }: Props) {
+function Index({ title }: Props) {
+  const { filter } = useParams<{ filter: string }>();
+
+  const [products, setProducts] = useState<Product[]>([]);
+
   useEffect(() => {
     document.title = title;
-  });
+  }, [title]);
+
+  const fetchProducts = async (): Promise<Product[]> => {
+    try {
+      const response = await api.get(`/search/${filter}`);
+      console.log("Response data:", response.data);
+
+      const data = response.data as { productInfo: Product[] };
+      const productsData = Array.isArray(data.productInfo)
+        ? data.productInfo
+        : [];
+
+      return productsData.map((product: Product) => ({
+        id: product.id,
+        name_product: product.name_product,
+        category: product.category,
+        price: product.price,
+        description: product.description,
+        seller_id: product.seller_id,
+      }));
+    } catch (error) {
+      console.error("Error fetching products", error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts()
+      .then((data) => setProducts(data))
+      .catch((err) => console.error("Error fetching products", err));
+  }, []);
+
   return (
     <>
-      <Navbar />
-      <NavUser />
       <div className="container-fluid">
         <div className="row">
           <div className="col-xs-12 col-lg-3">
@@ -21,36 +56,21 @@ function index({ title }: Props) {
           </div>
 
           <div className="col-xs-12 col-lg-9">
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
+            {products.map(
+              (product) => (
+                console.log("Product:", product.id),
+                (
+                  <ProductSearchCard
+                    id={product.id}
+                    key={product.id}
+                    title={product.name_product}
+                    description={product.description}
+                    image={"/texerror.jpg"}
+                    price={product.price}
+                  />
+                )
+              )
+            )}
           </div>
         </div>
       </div>
@@ -58,4 +78,4 @@ function index({ title }: Props) {
   );
 }
 
-export default index;
+export default Index;

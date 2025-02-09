@@ -33,7 +33,7 @@ function RegisterForm({ onSubmit, onReturn }: Props) {
           <label htmlFor="lastNameSlot" className="form-label"></label>
           <input
             required
-            name="last_name"
+            name="last_names"
             type="text"
             className={`form-control ${styles.loginSlot}`}
             id="lastNameSlotRegister"
@@ -50,6 +50,18 @@ function RegisterForm({ onSubmit, onReturn }: Props) {
             className={`form-control ${styles.loginSlot}`}
             id="phoneSlotRegister"
             placeholder="Numero de telefono"
+          />
+        </div>
+
+        <div className="my-2">
+          <label htmlFor="userSlot" className="form-label"></label>
+          <input
+            required
+            name="username"
+            type="text"
+            className={`form-control ${styles.loginSlot}`}
+            id="userSlotRegister"
+            placeholder="Nombre de usuario"
           />
         </div>
 
