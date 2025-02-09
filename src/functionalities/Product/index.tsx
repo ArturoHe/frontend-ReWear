@@ -4,7 +4,7 @@ import ImagesProductCard from "../../components/ImagesProductCard";
 import UserPanelLeft from "../../components/UserPanelLeft";
 import TextProduct from "../../components/TextProduct";
 import { useParams } from "react-router-dom";
-import { ProductResponse, User } from "../../api/types";
+import { ProductResponse } from "../../api/types";
 import api from "../../api/axiosConfig";
 
 type Props = { title: string };
@@ -29,22 +29,6 @@ function index({ title }: Props) {
       fetchProduct(id);
     }
   }, [id]);
-
-  const { username } = useParams<{ username: string }>();
-  const [userData, setuserData] = useState<User | null>(null);
-
-  const fetchUser = async (id: string) => {
-    const response = await api.get(`/product/${id}`);
-    const data: User = response.data as User;
-    console.log(data);
-    setuserData(data);
-  };
-
-  /*useEffect(() => {
-    if (id) {
-      fetchUser(username);
-    }
-  }, [id]);*/
 
   return (
     <>

@@ -3,7 +3,7 @@ import api from "../../api/axiosConfig";
 import ProductSearchCard from "../../components/ProductSearchCard";
 import SearchFilters from "../../components/SearchFilters";
 
-import { Product, ProductResponse } from "../../api/types";
+import { Product } from "../../api/types";
 import { useParams } from "react-router-dom";
 
 type Props = { title: string };

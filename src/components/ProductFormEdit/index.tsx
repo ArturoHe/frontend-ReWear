@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 import api from "../../api/axiosConfig";
-import { ProductCreate, ProductResponse } from "../../api/types";
+import { ProductResponse } from "../../api/types";
 import { useParams } from "react-router-dom";
 
 type Props = {
@@ -48,6 +48,7 @@ function LoginForm({}: Props) {
           Authorization: `${token}`,
         },
       });
+      console.log("Producto editado", response.data);
 
       window.location.href = `/product/${id}`;
     } catch (error) {
