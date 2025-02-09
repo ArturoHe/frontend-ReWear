@@ -18,6 +18,19 @@ function index({}: Props) {
     window.location.href = "/home";
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("Buscando...");
+
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      searchTerm: formData.get("search"),
+    };
+    console.log("payload", payload);
+
+    window.location.href = `/search/${payload.searchTerm}`;
+  };
+
   return (
     <nav
       className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}
@@ -44,14 +57,21 @@ function index({}: Props) {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <form className="d-flex align-items-center  w-100 ms-5" role="search">
+          <form
+            onSubmit={handleSubmit}
+            className="d-flex align-items-center  w-100 ms-5"
+            role="search"
+          >
             <div className="input-group rounded-pill border bg-white">
               <input
+                id="search"
+                name="search"
                 className="form-control me-2"
                 type="search"
                 placeholder="¿Qué estás buscando?"
                 aria-label="Search"
               />
+
               <button className="btn " type="submit">
                 <div style={{ fontSize: "1.5rem" }}>
                   <IoIosSearch />

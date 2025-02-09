@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 
 import Home from "./functionalities/HomePage";
 import Login from "./functionalities/Login";
@@ -46,7 +51,7 @@ function App() {
             element={<Product title="ReWear | Product" />}
           />
           <Route
-            path="/searchall"
+            path="/search/:filter"
             element={<Search title="ReWear | Search" />}
           />
 

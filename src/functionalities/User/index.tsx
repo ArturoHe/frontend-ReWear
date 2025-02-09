@@ -46,7 +46,6 @@ function Index({ title }: Props) {
 
   const fetchProducts = async (): Promise<Product[]> => {
     const response = await api.post("/productsuser", payload);
-    console.log(response);
 
     return (response.data as Product[]).map((product) => ({
       id: product.id,

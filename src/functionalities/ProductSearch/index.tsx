@@ -4,10 +4,13 @@ import ProductSearchCard from "../../components/ProductSearchCard";
 import SearchFilters from "../../components/SearchFilters";
 
 import { Product, ProductResponse } from "../../api/types";
+import { useParams } from "react-router-dom";
 
 type Props = { title: string };
 
 function Index({ title }: Props) {
+  const { filter } = useParams<{ filter: string }>();
+
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -15,16 +18,27 @@ function Index({ title }: Props) {
   }, [title]);
 
   const fetchProducts = async (): Promise<Product[]> => {
-    const response = await api.get<ProductResponse[]>("/products");
+    try {
+      const response = await api.get(`/search/${filter}`);
+      console.log("Response data:", response.data);
 
-    return response.data.map((product) => ({
-      id: product.idproduct,
-      name: product.name_product,
-      category: product.category,
-      price: parseFloat(product.price),
-      description: product.description,
-      seller_id: product.seller_id,
-    }));
+      const data = response.data as { productInfo: Product[] };
+      const productsData = Array.isArray(data.productInfo)
+        ? data.productInfo
+        : [];
+
+      return productsData.map((product: Product) => ({
+        id: product.id,
+        name: product.name,
+        category: product.category,
+        price: product.price,
+        description: product.description,
+        seller_id: product.seller_id,
+      }));
+    } catch (error) {
+      console.error("Error fetching products", error);
+      return [];
+    }
   };
 
   useEffect(() => {
@@ -42,16 +56,21 @@ function Index({ title }: Props) {
           </div>
 
           <div className="col-xs-12 col-lg-9">
-            {products.map((product) => (
-              <ProductSearchCard
-                id={product.id}
-                key={product.id}
-                title={product.name}
-                description={product.description}
-                image={"texerror.jpg"}
-                price={product.price}
-              />
-            ))}
+            {products.map(
+              (product) => (
+                console.log("Product:", product.id),
+                (
+                  <ProductSearchCard
+                    id={product.id}
+                    key={product.id}
+                    title={product.name}
+                    description={product.description}
+                    image={"/texerror.jpg"}
+                    price={product.price}
+                  />
+                )
+              )
+            )}
           </div>
         </div>
       </div>
