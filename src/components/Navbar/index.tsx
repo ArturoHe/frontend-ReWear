@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
@@ -14,15 +15,15 @@ function index({}: Props) {
       className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/home">
+        <Link className="navbar-brand" to="/home">
           <img
-            src="./logo.png"
+            src="/logo.png"
             alt="Logo Rewear"
             width="100%"
             height="60"
             className="d-inline-block align-text-top"
           />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

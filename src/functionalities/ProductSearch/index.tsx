@@ -1,15 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import api from "../../api/axiosConfig";
 import ProductSearchCard from "../../components/ProductSearchCard";
 import SearchFilters from "../../components/SearchFilters";
 import Navbar from "../../components/Navbar";
 import NavUser from "../../components/NavUser";
+import { Product, ProductResponse } from "../../api/types";
 
 type Props = { title: string };
 
-function index({ title }: Props) {
+function Index({ title }: Props) {
+  const [products, setProducts] = useState<Product[]>([]);
+
   useEffect(() => {
     document.title = title;
-  });
+  }, [title]);
+
+  const fetchProducts = async (): Promise<Product[]> => {
+    const response = await api.get<ProductResponse[]>("/products");
+
+    return response.data.map((product) => ({
+      id: product.id,
+      name: product.name_product,
+      category: product.category,
+      price: parseFloat(product.price),
+      description: product.description,
+      publicationStatus: product.publication_status,
+      publicationDate: product.publication_date,
+    }));
+  };
+
+  useEffect(() => {
+    fetchProducts()
+      .then((data) => setProducts(data))
+      .catch((err) => console.error("Error fetching products", err));
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -21,36 +46,16 @@ function index({ title }: Props) {
           </div>
 
           <div className="col-xs-12 col-lg-9">
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
-            <ProductSearchCard
-              title="Huevos"
-              description="Huevos de gallina de corral de granja ecológica certificada por la UE y el sello de bienestar animal de la UE."
-              image="landing.jpg"
-              price={10000}
-            />
+            {products.map((product) => (
+              <ProductSearchCard
+                id={product.id}
+                key={product.id}
+                title={product.name}
+                description={product.description}
+                image={"texerror.jpg"}
+                price={product.price}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -58,4 +63,4 @@ function index({ title }: Props) {
   );
 }
 
-export default index;
+export default Index;

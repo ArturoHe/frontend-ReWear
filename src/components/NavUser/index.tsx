@@ -7,14 +7,11 @@ function NavUser({}: Props) {
   return (
     <nav className={`navbar ${styles.navColorRewear} p-0`}>
       <div className="container-fluid">
-        <a className="navbar-brand">
-          <a
-            className={`form-control ${styles.s}`}
-            href=""
-            style={{ fontSize: "1.5rem" }}
-          >
-            <TiShoppingCart />
-          </a>
+        <a
+          className={`navbar-brand ${styles.s}`}
+          style={{ fontSize: "1.5rem" }}
+        >
+          <TiShoppingCart />
         </a>
         <div className="d-flex">
           <div className=" mx-1">

@@ -1,5 +1,5 @@
 type Props = {
-  id: string;
+  id: number;
   title: string;
   price: number;
 };
@@ -11,7 +11,7 @@ function index({ title, price }: Props) {
       style={{ minWidth: "12rem", minHeight: "12rem" }}
     >
       <img
-        src="./texerror.jpg"
+        src="/texerror.jpg"
         className="card-img-top"
         alt="..."
         style={{ height: "50%", objectFit: "cover" }}

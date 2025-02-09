@@ -20,7 +20,10 @@ function App() {
 
         <Route path="/login" element={<Login title="ReWear | Login" />} />
 
-        <Route path="/user" element={<User title="ReWear | User" />} />
+        <Route
+          path="/user/:username"
+          element={<User title="ReWear | User" />}
+        />
 
         <Route
           path="/userconfig"
@@ -32,9 +35,12 @@ function App() {
           element={<NewProduct title="ReWear | Product" />}
         />
 
-        <Route path="/product" element={<Product title="ReWear | Product" />} />
+        <Route
+          path="/product/:id"
+          element={<Product title="ReWear | Product" />}
+        />
 
-        <Route path="/search" element={<Search title="ReWear | Search" />} />
+        <Route path="/searchall" element={<Search title="ReWear | Search" />} />
       </Routes>
     </Router>
   );

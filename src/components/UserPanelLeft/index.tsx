@@ -4,6 +4,7 @@ import ButtonAction from "../ButtonAction";
 import Button from "../Button";
 
 import styles from "./style.module.css";
+import { Link } from "react-router-dom";
 
 type Props = {
   profileImage: string;
@@ -19,7 +20,7 @@ function index({ profileImage, userName, description, self }: Props) {
   }
 
   return (
-    <div className="container text-center py-3">
+    <div className="container text-center py-3 position-relative">
       <div className="row row-cols-1">
         <div className="col">
           <div>
@@ -30,6 +31,7 @@ function index({ profileImage, userName, description, self }: Props) {
                 alt=""
                 style={{ width: "15rem", height: "15rem", objectFit: "cover" }}
               />
+              <Link className="stretched-link" to={`/user/${userName}`}></Link>
             </div>
           </div>
           <div>

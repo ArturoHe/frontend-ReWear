@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
+
 type Props = {
+  id: number;
   image: string;
   title: string;
   description: string;
   price: number;
 };
 
-function index({ image, title, description, price }: Props) {
+function index({ image, title, description, price, id }: Props) {
   return (
     <div
-      className="container-fluid mt-3 shadow"
+      className="container-fluid mt-3 shadow position-relative"
       style={{ borderRadius: "30px" }}
     >
       <div className="container p-3">
@@ -29,6 +32,7 @@ function index({ image, title, description, price }: Props) {
           <div className="col-xs-6 col-lg-5">
             <h1>{title}</h1>
             <p>{description}</p>
+            <Link className="stretched-link" to={`/product/${id}`}></Link>
           </div>
 
           <div className="col-xs-6 col-lg-3">

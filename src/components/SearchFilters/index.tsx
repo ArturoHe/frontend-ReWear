@@ -39,7 +39,6 @@ function index({}: Props) {
           max="1000000"
           step="1000"
           id="customRange1"
-          defaultValue={1000000}
           onChange={handleRangePrice}
         />
         <div>
@@ -70,7 +69,7 @@ function index({}: Props) {
       <hr />
 
       <select className="form-select my-3" aria-label="Default select example">
-        <option selected>Tipo de prenda</option>
+        <option value="tipo de prenda">Tipo de prenda</option>
         <option value="Camiseta">Camiseta</option>
         <option value="Pantalon">Pantalon</option>
         <option value="Sudadera">Sudadera</option>
