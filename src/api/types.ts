@@ -25,3 +25,7 @@ export interface ProductResponse {
   publication_status: string;
   publication_date: string;
 }
+
+export interface ProductCreate {
+  productId: number;
+}
