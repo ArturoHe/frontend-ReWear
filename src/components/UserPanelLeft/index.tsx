@@ -4,72 +4,87 @@ import ButtonAction from "../ButtonAction";
 import Button from "../Button";
 
 import styles from "./style.module.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   profileImage: string;
   userName: string;
   description?: string;
   stars?: number;
-  self?: boolean;
 };
 
-function index({ profileImage, userName, description, self }: Props) {
+function index({ profileImage, userName, description }: Props) {
+  const userLogged = sessionStorage.getItem("username");
+  const isSelf = userName === userLogged;
+
+  const navigate = useNavigate();
+
+  const handleNewProduct = () => {
+    navigate("/newproduct");
+  };
+
+  const handleConfig = () => {
+    navigate("/userconfig");
+  };
+
   if (!description) {
     description = "No hay descripción";
   }
 
   return (
-    <div className="container text-center py-3 position-relative">
+    <div className="container text-center py-3">
       <div className="row row-cols-1">
         <div className="col">
           <div>
-            <div className="">
+            <div>
               <img
                 className={`${styles.profile}`}
                 src={profileImage}
                 alt=""
                 style={{ width: "15rem", height: "15rem", objectFit: "cover" }}
               />
-              <Link className="stretched-link" to={`/user/${userName}`}></Link>
             </div>
-          </div>
-          <div>
-            <h3 className="py-3">{userName}</h3>
-          </div>
 
-          <div>
-            <p className="py-3">{description}</p>
-          </div>
+            <div>
+              <h3 className="py-3">{userName}</h3>
+            </div>
 
-          <div
-            className="row mx-5 pb-4"
-            style={{ fontSize: "1.5rem", color: "gold" }}
-          >
-            <div className="col">
-              <FaStar />
+            <div>
+              <p className="py-3">{description}</p>
             </div>
-            <div className="col">
-              <FaStar />
-            </div>
-            <div className="col">
-              <FaStar />
-            </div>
-            <div className="col">
-              <FaStar />
-            </div>
-            <div className="col">
-              <FaStar />
+
+            <div
+              className="row mx-5 pb-4"
+              style={{ fontSize: "1.5rem", color: "gold" }}
+            >
+              <div className="col">
+                <FaStar />
+              </div>
+              <div className="col">
+                <FaStar />
+              </div>
+              <div className="col">
+                <FaStar />
+              </div>
+              <div className="col">
+                <FaStar />
+              </div>
+              <div className="col">
+                <FaStar />
+              </div>
             </div>
           </div>
         </div>
-        {self ? (
+        {isSelf ? (
           <div id="buttons" className="container">
             <div className="col py-3">
-              <ButtonAction text="Vender nuevo artículo" />
+              <ButtonAction
+                text="Vender nuevo artículo"
+                onClick={handleNewProduct}
+              />
             </div>
             <div className="col">
-              <Button text="Configuración" />
+              <Button text="Configuración" onClick={handleConfig} />
             </div>
           </div>
         ) : null}

@@ -35,7 +35,8 @@ function LoginForm({ onReturn, onRecoverPassword }: Props) {
 
       if (token) {
         sessionStorage.setItem("jwtToken", token);
-        window.location.href = "/user";
+        sessionStorage.setItem("username", payload.username as string);
+        window.location.href = "/home";
       } else {
         alert("No se recibió un token");
       }

@@ -9,43 +9,57 @@ import NewProduct from "./functionalities/ProductCreation";
 import Product from "./functionalities/Product";
 import LandingPage from "./functionalities/LandingPage";
 import Search from "./functionalities/ProductSearch";
+import Layout from "./components/Layout";
+import ErrorPage from "./functionalities/ErrorPage";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
+  const token = sessionStorage.getItem("jwtToken");
+
   return (
     <Router>
       <Routes>
+        {/* Ruta pública sin layout */}
         <Route path="/" element={<LandingPage title="ReWear | Landing" />} />
-
-        <Route path="/home" element={<Home title="ReWear | Inicio" />} />
-
         <Route path="/login" element={<Login title="ReWear | Login" />} />
 
-        <Route
-          path="/user/:username"
-          element={<User title="ReWear | User" />}
-        />
+        {/* Rutas con Layout */}
+        <Route element={<Layout />}>
+          <Route path="/home" element={<Home title="ReWear | Inicio" />} />
+          <Route
+            path="/user/:username"
+            element={<User title="ReWear | User" />}
+          />
 
-        <Route
-          path="/userconfig"
-          element={<UserConfig title="ReWear | Configuracion" />}
-        />
+          <Route
+            path="/userconfig"
+            element={<UserConfig title="ReWear | Configuración" />}
+          />
 
-        <Route
-          path="/newproduct"
-          element={<NewProduct title="ReWear | Product" />}
-        />
+          <Route element={<PrivateRoute />}>
+            <Route
+              path="/newproduct"
+              element={<NewProduct title="ReWear | Product" />}
+            />
+          </Route>
 
-        <Route
-          path="/product/:id"
-          element={<Product title="ReWear | Product" />}
-        />
+          <Route
+            path="/product/:id"
+            element={<Product title="ReWear | Product" />}
+          />
+          <Route
+            path="/searchall"
+            element={<Search title="ReWear | Search" />}
+          />
 
-        <Route path="/searchall" element={<Search title="ReWear | Search" />} />
+          <Route
+            path="*"
+            element={<ErrorPage title="ReWear | Configuración" />}
+          />
+        </Route>
       </Routes>
     </Router>
   );
 }
-
-/*/*/
 
 export default App;

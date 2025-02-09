@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import UserPanelLeft from "../../components/UserPanelLeft";
 import PersonalComments from "../../components/PersonalComments";
-import Navbar from "../../components/Navbar";
-import NavUser from "../../components/NavUser";
+
 import MiniCardProducts from "../../components/MiniCardProducts";
 import { useParams } from "react-router-dom";
 import api from "../../api/axiosConfig";
@@ -62,8 +61,6 @@ function Index({ title }: Props) {
 
   return (
     <>
-      <Navbar />
-      <NavUser />
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">

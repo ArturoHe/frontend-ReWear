@@ -7,9 +7,17 @@ import { IoIosSearch } from "react-icons/io";
 type Props = {};
 
 function index({}: Props) {
+  const logged = sessionStorage.getItem("username");
+
   const handleLogin = () => {
     window.location.href = "/login";
   };
+
+  const handleClose = () => {
+    sessionStorage.clear();
+    window.location.href = "/home";
+  };
+
   return (
     <nav
       className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}
@@ -54,12 +62,20 @@ function index({}: Props) {
 
           <div className="container text-center">
             <div className="row align-items-start">
-              <div className="col">
-                <ButtonAction text="Crear cuenta" onClick={handleLogin} />
-              </div>
-              <div className="col">
-                <Button text="iniciar Sesión" onClick={handleLogin} />
-              </div>
+              {logged ? (
+                <div className="col mx-5 px-5">
+                  <ButtonAction text="Cerrar Sesion" onClick={handleClose} />
+                </div>
+              ) : (
+                <>
+                  <div className="col">
+                    <ButtonAction text="Crear cuenta" onClick={handleLogin} />
+                  </div>
+                  <div className="col">
+                    <Button text="iniciar Sesión" onClick={handleLogin} />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

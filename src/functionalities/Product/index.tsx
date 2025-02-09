@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
-import NavUser from "../../components/NavUser";
+
 import ImagesProductCard from "../../components/ImagesProductCard";
 import UserPanelLeft from "../../components/UserPanelLeft";
 import TextProduct from "../../components/TextProduct";
@@ -49,8 +48,6 @@ function index({ title }: Props) {
 
   return (
     <>
-      <Navbar />
-      <NavUser />
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">

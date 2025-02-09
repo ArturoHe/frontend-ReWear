@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../api/axiosConfig";
 import ProductSearchCard from "../../components/ProductSearchCard";
 import SearchFilters from "../../components/SearchFilters";
-import Navbar from "../../components/Navbar";
-import NavUser from "../../components/NavUser";
+
 import { Product, ProductResponse } from "../../api/types";
 
 type Props = { title: string };
@@ -37,8 +36,6 @@ function Index({ title }: Props) {
 
   return (
     <>
-      <Navbar />
-      <NavUser />
       <div className="container-fluid">
         <div className="row">
           <div className="col-xs-12 col-lg-3">

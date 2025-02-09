@@ -1,34 +1,43 @@
+import { Link } from "react-router-dom";
 import styles from "./style.module.css";
 import { TiShoppingCart } from "react-icons/ti";
 
 type Props = {};
 
 function NavUser({}: Props) {
+  const userName = sessionStorage.getItem("username");
+
   return (
     <nav className={`navbar ${styles.navColorRewear} p-0`}>
       <div className="container-fluid">
-        <a
+        <Link
           className={`navbar-brand ${styles.s}`}
           style={{ fontSize: "1.5rem" }}
+          to="/home"
         >
           <TiShoppingCart />
-        </a>
+        </Link>
+
         <div className="d-flex">
           <div className=" mx-1">
-            <a className={`form-control ${styles.s}`} href="">
+            <Link className={`form-control ${styles.s}`} to="/home">
               Inicio
-            </a>
+            </Link>
           </div>
 
           <div className=" mx-1">
-            <a className={`form-control ${styles.s}`} href="">
+            <Link className={`form-control ${styles.s}`} to="/home">
               Mis Compras
-            </a>
+            </Link>
           </div>
+
           <div className=" mx-1">
-            <a className={`form-control ${styles.s}`} href="">
+            <Link
+              className={`form-control ${styles.s}`}
+              to={`/user/${userName}`}
+            >
               Mi Perfil
-            </a>
+            </Link>
           </div>
         </div>
       </div>
