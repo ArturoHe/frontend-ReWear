@@ -40,11 +40,11 @@ function index({ title }: Props) {
     setuserData(data);
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (id) {
       fetchUser(username);
     }
-  }, [id]);
+  }, [id]);*/
 
   return (
     <>
@@ -83,7 +83,7 @@ function index({ title }: Props) {
               <div className="col-lg-3">
                 <UserPanelLeft
                   profileImage="/cuadrado.jpg"
-                  userName={userData?.username || ""}
+                  userName={productData?.username || ""}
                 />
               </div>
             </div>

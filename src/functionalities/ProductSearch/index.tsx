@@ -18,13 +18,12 @@ function Index({ title }: Props) {
     const response = await api.get<ProductResponse[]>("/products");
 
     return response.data.map((product) => ({
-      id: product.id,
+      id: product.idproduct,
       name: product.name_product,
       category: product.category,
       price: parseFloat(product.price),
       description: product.description,
-      publicationStatus: product.publication_status,
-      publicationDate: product.publication_date,
+      seller_id: product.seller_id,
     }));
   };
 

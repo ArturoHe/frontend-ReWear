@@ -5,7 +5,8 @@ import PersonalComments from "../../components/PersonalComments";
 import MiniCardProducts from "../../components/MiniCardProducts";
 import { useParams } from "react-router-dom";
 import api from "../../api/axiosConfig";
-import { Product, ProductResponse, User } from "../../api/types";
+import { Product, User } from "../../api/types";
+import Button from "../../components/Button";
 
 type Props = { title: string };
 
@@ -39,17 +40,21 @@ function Index({ title }: Props) {
 
   const [products, setProducts] = useState<Product[]>([]);
 
-  const fetchProducts = async (): Promise<Product[]> => {
-    const response = await api.get<ProductResponse[]>("/products");
+  const payload = {
+    seller_id: 5,
+  };
 
-    return response.data.map((product) => ({
+  const fetchProducts = async (): Promise<Product[]> => {
+    const response = await api.post("/productsuser", payload);
+    console.log(response);
+
+    return (response.data as Product[]).map((product) => ({
       id: product.id,
-      name: product.name_product,
+      name: product.name,
       category: product.category,
-      price: parseFloat(product.price),
+      price: product.price,
       description: product.description,
-      publicationStatus: product.publication_status,
-      publicationDate: product.publication_date,
+      seller_id: product.seller_id,
     }));
   };
 
@@ -86,10 +91,11 @@ function Index({ title }: Props) {
                 >
                   {products.map((product) => (
                     <MiniCardProducts
-                      id={product.id}
-                      price={product.price}
                       key={product.id}
-                      title={product.name}
+                      id={product.id}
+                      title={product.description}
+                      price={product.price}
+                      owner={product.seller_id}
                     />
                   ))}
                 </div>

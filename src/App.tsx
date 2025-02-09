@@ -14,8 +14,6 @@ import ErrorPage from "./functionalities/ErrorPage";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  const token = sessionStorage.getItem("jwtToken");
-
   return (
     <Router>
       <Routes>

@@ -4,7 +4,7 @@ import ButtonAction from "../ButtonAction";
 import Button from "../Button";
 
 import styles from "./style.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type Props = {
   profileImage: string;
@@ -46,7 +46,9 @@ function index({ profileImage, userName, description }: Props) {
             </div>
 
             <div>
-              <h3 className="py-3">{userName}</h3>
+              <Link to={`/user/${userName}`} style={{ color: "black" }}>
+                <h3 className="py-3">{userName}</h3>
+              </Link>
             </div>
 
             <div>

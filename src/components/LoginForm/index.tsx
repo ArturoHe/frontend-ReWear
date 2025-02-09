@@ -2,6 +2,8 @@ import React from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 import axios from "axios";
+import api from "../../api/axiosConfig";
+import { authResponse, LoginResponse } from "../../api/types";
 
 type Props = {
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -9,10 +11,6 @@ type Props = {
   onRecoverPassword?: () => void;
   onReturn?: () => void;
 };
-
-interface LoginResponse {
-  token: string;
-}
 
 function LoginForm({ onReturn, onRecoverPassword }: Props) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -33,9 +31,20 @@ function LoginForm({ onReturn, onRecoverPassword }: Props) {
       console.log("response", response);
       const token = response.data.token;
 
+      const responseId = await api.get<authResponse>("/perfil", {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
+
+      const idUser = responseId.data.id;
+      const username = responseId.data.username;
+
       if (token) {
         sessionStorage.setItem("jwtToken", token);
-        sessionStorage.setItem("username", payload.username as string);
+        sessionStorage.setItem("username", username);
+        sessionStorage.setItem("id", idUser);
+
         window.location.href = "/home";
       } else {
         alert("No se recibió un token");

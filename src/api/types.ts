@@ -11,21 +11,29 @@ export interface Product {
   category: string;
   price: number;
   description: string;
-  publicationStatus: string;
-  publicationDate: string;
+  seller_id: number;
 }
 
 export interface ProductResponse {
-  id: number;
+  idproduct: number;
   seller_id: number;
+  username: string;
   name_product: string;
-  category: string;
   price: string;
   description: string;
-  publication_status: string;
-  publication_date: string;
+  category: string;
+  status: number;
 }
 
 export interface ProductCreate {
   productId: number;
+}
+
+export interface LoginResponse {
+  token: string;
+}
+
+export interface authResponse {
+  username: string;
+  id: string;
 }

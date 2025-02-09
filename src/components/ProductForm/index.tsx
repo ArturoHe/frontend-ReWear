@@ -2,7 +2,7 @@ import React from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 import api from "../../api/axiosConfig";
-import { ProductCreate, ProductResponse } from "../../api/types";
+import { ProductCreate } from "../../api/types";
 
 type Props = {
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
