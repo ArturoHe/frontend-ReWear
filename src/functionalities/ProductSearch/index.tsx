@@ -29,7 +29,7 @@ function Index({ title }: Props) {
 
       return productsData.map((product: Product) => ({
         id: product.id,
-        name: product.name,
+        name_product: product.name_product,
         category: product.category,
         price: product.price,
         description: product.description,
@@ -63,7 +63,7 @@ function Index({ title }: Props) {
                   <ProductSearchCard
                     id={product.id}
                     key={product.id}
-                    title={product.name}
+                    title={product.name_product}
                     description={product.description}
                     image={"/texerror.jpg"}
                     price={product.price}

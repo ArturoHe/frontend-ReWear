@@ -4,13 +4,14 @@ import Button from "../Button";
 
 type Props = {
   id: number;
-  title: string;
+
+  name: string;
   price: number;
   onClick?: () => void;
   owner?: number;
 };
 
-function index({ title, price, owner, id }: Props) {
+function index({ name, price, owner, id }: Props) {
   const userID = sessionStorage.getItem("id");
 
   const isSelf =
@@ -22,15 +23,24 @@ function index({ title, price, owner, id }: Props) {
         Authorization: sessionStorage.getItem("jwtToken"),
       },
     });
-    alert("Producto eliminado");
+    alert(response);
     window.location.reload();
+  };
+
+  const handleEdit = async () => {
+    window.location.href = `/editproduct/${id}`;
   };
 
   return (
     <>
       <div
         className="card text-center"
-        style={{ minWidth: "12rem", minHeight: "12rem" }}
+        style={{
+          minWidth: "12rem",
+          minHeight: "12rem",
+          maxHeight: "12rem",
+          maxWidth: "12rem",
+        }}
       >
         <img
           src="/texerror.jpg"
@@ -40,7 +50,7 @@ function index({ title, price, owner, id }: Props) {
         />
         <div className="card-body" style={{ padding: "0.5rem", height: "20%" }}>
           <h5 className="card-title" style={{ fontSize: "1rem" }}>
-            {title}
+            {name}
           </h5>
           <p className="card-text mb-0">$ {price}</p>
 
@@ -50,7 +60,13 @@ function index({ title, price, owner, id }: Props) {
 
       {isSelf ? (
         <div>
-          <Button text="eliminar" onClick={handleDelete} />
+          <div className="me-5 my-2">
+            <Button text="eliminar" onClick={handleDelete} />
+          </div>
+
+          <div className="me-5 my-2">
+            <Button text="Editar" onClick={handleEdit} />
+          </div>
         </div>
       ) : null}
     </>

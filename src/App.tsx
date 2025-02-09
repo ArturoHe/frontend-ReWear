@@ -17,6 +17,7 @@ import Search from "./functionalities/ProductSearch";
 import Layout from "./components/Layout";
 import ErrorPage from "./functionalities/ErrorPage";
 import PrivateRoute from "./components/PrivateRoute";
+import ProductEdit from "./components/ProductFormEdit";
 
 function App() {
   return (
@@ -43,6 +44,13 @@ function App() {
             <Route
               path="/newproduct"
               element={<NewProduct title="ReWear | Product" />}
+            />
+          </Route>
+
+          <Route element={<PrivateRoute />}>
+            <Route
+              path="/editproduct/:id"
+              element={<ProductEdit title="ReWear | Edit" />}
             />
           </Route>
 
