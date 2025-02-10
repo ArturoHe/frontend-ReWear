@@ -11,7 +11,7 @@ type Props = {
   onReturn?: () => void;
 };
 
-function RegisterForm({ onSubmit, onReturn }: Props) {
+function RegisterForm({ onReturn }: Props) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
