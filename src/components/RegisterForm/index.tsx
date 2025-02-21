@@ -1,6 +1,9 @@
 import React from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
+import { authResponse, LoginResponse } from "../../api/types";
+import api from "../../api/axiosConfig";
+import axios from "axios";
 
 type Props = {
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -8,15 +11,56 @@ type Props = {
   onReturn?: () => void;
 };
 
-function RegisterForm({ onSubmit, onReturn }: Props) {
+function RegisterForm({ onReturn }: Props) {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      first_name: formData.get("first_name"),
+      last_names: formData.get("last_names"),
+      phone: formData.get("phone"),
+      username: formData.get("username"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    console.log("payload", payload);
+    try {
+      const response = await axios.post<LoginResponse>(
+        "https://backend-rewear-production.up.railway.app/register",
+        payload
+      );
+
+      console.log("response", response);
+      const token = response.data.token;
+
+      const responseId = await api.get<authResponse>("/perfil", {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
+
+      const idUser = responseId.data.id;
+      const username = responseId.data.username;
+
+      if (token) {
+        sessionStorage.setItem("jwtToken", token);
+        sessionStorage.setItem("username", username);
+        sessionStorage.setItem("id", idUser);
+
+        window.location.href = "/home";
+      } else {
+        alert("No se recibió un token");
+      }
+    } catch (error) {
+      console.error("Error en el Registro", error);
+      alert("Error en el Registro");
+    }
+  };
+
   return (
     <>
-      <form
-        onSubmit={onSubmit}
-        method="POST"
-        action="https://backend-rewear-production.up.railway.app/register
-"
-      >
+      <form onSubmit={handleSubmit}>
         <div className="my-2">
           <label htmlFor="firstNameSlot" className="form-label"></label>
           <input
