@@ -13,6 +13,8 @@ import Layout from "./components/Layout";
 import ErrorPage from "./functionalities/ErrorPage";
 import PrivateRoute from "./components/PrivateRoute";
 import ProductEdit from "./components/ProductFormEdit";
+import Cart from "./functionalities/Cart";
+import History from "./functionalities/History";
 
 function App() {
   return (
@@ -53,9 +55,20 @@ function App() {
             path="/product/:id"
             element={<Product title="ReWear | Product" />}
           />
+
           <Route
             path="/search/:filter"
             element={<Search title="ReWear | Search" />}
+          />
+
+          <Route
+            path="/cart"
+            element={<Cart title="ReWear | Configuración" />}
+          />
+
+          <Route
+            path="/history"
+            element={<History title="ReWear | Configuración" />}
           />
 
           <Route

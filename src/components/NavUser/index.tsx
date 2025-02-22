@@ -13,7 +13,7 @@ function NavUser({}: Props) {
         <Link
           className={`navbar-brand ${styles.s}`}
           style={{ fontSize: "1.5rem" }}
-          to="/home"
+          to="/cart"
         >
           <TiShoppingCart />
         </Link>
@@ -26,7 +26,7 @@ function NavUser({}: Props) {
           </div>
 
           <div className=" mx-1">
-            <Link className={`form-control ${styles.s}`} to="/home">
+            <Link className={`form-control ${styles.s}`} to="/history">
               Mis Compras
             </Link>
           </div>
