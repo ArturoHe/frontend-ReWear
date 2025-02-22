@@ -59,21 +59,13 @@ function index({ profileImage, userName, description }: Props) {
               className="row mx-5 pb-4"
               style={{ fontSize: "1.5rem", color: "gold" }}
             >
-              <div className="col">
+              <span>
                 <FaStar />
-              </div>
-              <div className="col">
                 <FaStar />
-              </div>
-              <div className="col">
                 <FaStar />
-              </div>
-              <div className="col">
                 <FaStar />
-              </div>
-              <div className="col">
                 <FaStar />
-              </div>
+              </span>
             </div>
           </div>
         </div>

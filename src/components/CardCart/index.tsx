@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Button from "../Button";
+import ButtonAction from "../ButtonAction";
 
 type Props = {
   id: number;
@@ -31,10 +33,17 @@ function index({ image, title, description, price, id }: Props) {
           <div className="col-xs-6 col-lg-5">
             <h1>{title}</h1>
             <p>{description}</p>
-            <Link className="stretched-link" to={`/product/${id}`}></Link>
           </div>
           <div className="col-xs-6 col-lg-3">
             <h2>${price}</h2>
+            <div className="py-2">
+              <Link to={`/product/${id}`}>
+                <ButtonAction text="Ver Info" />
+              </Link>
+            </div>
+            <div>
+              <Button text="Eliminar" />
+            </div>
           </div>
         </div>
       </div>

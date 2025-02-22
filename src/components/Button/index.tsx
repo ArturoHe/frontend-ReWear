@@ -1,6 +1,7 @@
 import styles from "./style.module.css";
 
 type Props = {
+  id?: string;
   text: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset"; // Tipo de botón
