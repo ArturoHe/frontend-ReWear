@@ -13,11 +13,13 @@ function HomePage({ title }: Props) {
 
   return (
     <div>
-      <div className="container px-5">
+      <div className="container-fluid">
         <Carousel />
       </div>
 
-      <Categories />
+      <div className="container-fluid">
+        <Categories />
+      </div>
     </div>
   );
 }

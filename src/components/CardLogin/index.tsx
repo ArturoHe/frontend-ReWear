@@ -4,6 +4,8 @@ import LoginForm from "../LoginForm";
 import styles from "./style.module.css";
 import RegisterForm from "../RegisterForm";
 import RecoverPassForm from "../RecoverPassForm";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import ButtonGoogle from "../ButtonGoogle";
 
 type Props = {};
 
@@ -33,7 +35,6 @@ function CardLogin({}: Props) {
         <div className="container-fluid px-5 py-3">
           <img src="/logo.png" className="card-img-top" alt="Logo ReWear" />
         </div>
-
         {currentView === "initial" && (
           <div className="card-body" style={{ textAlign: "center" }}>
             <div className="mx-5">
@@ -44,7 +45,14 @@ function CardLogin({}: Props) {
                 />
               </div>
               <div className="my-3">
-                <Button text={"Iniciar con Google"} />
+                <GoogleOAuthProvider
+                  clientId="
+    1060000000000-"
+                >
+                  <div>
+                    <ButtonGoogle />
+                  </div>
+                </GoogleOAuthProvider>
               </div>
               <div className="mt-5 mb-3">
                 <a
