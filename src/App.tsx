@@ -15,6 +15,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import ProductEdit from "./components/ProductFormEdit";
 import Cart from "./functionalities/Cart";
 import History from "./functionalities/History";
+import RecoverPass from "./functionalities/RecoverPass";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
         {/* Ruta pública sin layout */}
         <Route path="/" element={<LandingPage title="ReWear | Landing" />} />
         <Route path="/login" element={<Login title="ReWear | Login" />} />
+        <Route
+          path="/actualizarcontrasena"
+          element={<RecoverPass title="ReWear | Recover" />}
+        />
 
         {/* Rutas con Layout */}
         <Route element={<Layout />}>

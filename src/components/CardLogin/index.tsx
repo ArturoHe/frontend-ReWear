@@ -45,10 +45,7 @@ function CardLogin({}: Props) {
                 />
               </div>
               <div className="my-3">
-                <GoogleOAuthProvider
-                  clientId="
-    1060000000000-"
-                >
+                <GoogleOAuthProvider clientId="979740667016-70vefbdl48mdkjo0q2n1rk28uvold6ht.apps.googleusercontent.com">
                   <div>
                     <ButtonGoogle />
                   </div>
