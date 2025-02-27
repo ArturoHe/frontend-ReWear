@@ -17,14 +17,13 @@ function RecoverPassForm({ onReturn }: Props) {
     const payload = {
       email: formData.get("email"),
     };
-    console.log("payload", payload);
 
     try {
       const response = await api.post("/forgot-password", payload);
-      console.log("response", response);
+
       alert("Se ha enviado un correo para recuperar tu contraseña");
+      window.location.href = "/";
     } catch (error) {
-      console.error("Error en el login", error);
       alert("Error en el inicio de sesión");
     }
   };

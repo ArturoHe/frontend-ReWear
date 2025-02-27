@@ -1,24 +1,39 @@
+import api from "../../api/axiosConfig";
 import Button from "../Button";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 
-type Props = {};
+type Props = {
+  token: string;
+};
 
-function CardLogin({}: Props) {
+function CardLogin({ token }: Props) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const payload = {
+    const verify = {
       password: formData.get("password"),
       password2: formData.get("password2"),
     };
 
-    if (payload.password !== payload.password2) {
-      alert("Las contraseñas no coinciden");
+    const payload = {
+      token: token,
+      newPassword: verify.password,
+    };
+
+    if (verify.password == verify.password2) {
+      try {
+        const response = await api.post("/update-password", payload);
+        alert("Cambio de contraseña exitoso");
+        window.location.href = "/login";
+      } catch (error) {
+        alert("Error en el cambio de contraseña");
+      }
+
       return;
     } else {
-      alert("Contraseña cambiada con éxito");
+      alert("Las contraseñas no coinciden");
     }
   };
 
@@ -31,22 +46,26 @@ function CardLogin({}: Props) {
         <div className="card-body" style={{ textAlign: "center" }}>
           <div className="mx-5">
             <form onSubmit={handleSubmit}>
-              <input
-                required
-                name="password"
-                type="password"
-                className={`form-control ${styles.loginSlot}`}
-                id="passwordSlotLogin"
-                placeholder="Contraseña"
-              />
-              <input
-                required
-                name="password2"
-                type="password"
-                className={`form-control ${styles.loginSlot}`}
-                id="passwordSlotLogin2"
-                placeholder="Repetir Contraseña"
-              />
+              <div>
+                <input
+                  required
+                  name="password"
+                  type="password"
+                  className={`form-control ${styles.loginSlot}`}
+                  id="passwordSlotLogin"
+                  placeholder="Contraseña"
+                />
+              </div>
+              <div className="my-3">
+                <input
+                  required
+                  name="password2"
+                  type="password"
+                  className={`form-control ${styles.loginSlot}`}
+                  id="passwordSlotLogin2"
+                  placeholder="Repetir Contraseña"
+                />
+              </div>
 
               <div>
                 <ButtonAction text="test" />

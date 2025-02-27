@@ -21,14 +21,13 @@ function LoginForm({ onReturn, onRecoverPassword }: Props) {
       username: formData.get("username"),
       password: formData.get("password"),
     };
-    console.log("payload", payload);
+
     try {
       const response = await axios.post<LoginResponse>(
         "https://backend-rewear-production.up.railway.app/login",
         payload
       );
 
-      console.log("response", response);
       const token = response.data.token;
 
       const responseId = await api.get<authResponse>("/perfil", {
@@ -50,7 +49,6 @@ function LoginForm({ onReturn, onRecoverPassword }: Props) {
         alert("No se recibió un token");
       }
     } catch (error) {
-      console.error("Error en el login", error);
       alert("Error en el inicio de sesión");
     }
   };

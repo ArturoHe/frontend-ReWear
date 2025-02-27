@@ -6,28 +6,29 @@ type Props = {};
 function index({}: Props) {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
-  console.log("token", token);
 
   if (!token) {
-    return (
-      <>
-        <div>nononono</div>
-      </>
-    );
+    return <h1>Token no encontrado</h1>;
   }
 
   return (
     <>
-      <div
-        className="container-fluid"
-        style={{ minHeight: "100vh", backgroundColor: "gray " }}
-      >
+      <div className="container-fluid">
         <div className="row">
-          <div className="col d-none d-sm-block">a</div>
-          <div className="col text-center ">
-            <CardRecover />
+          <div
+            className="col col-lg-4 p-0 d-none d-sm-block"
+            style={{ minHeight: "100vh", backgroundColor: "rgb(243,171,177)" }}
+          ></div>
+          <div
+            className="col-lg-4 d-flex justify-content-center align-items-center"
+            style={{ minHeight: "100vh", backgroundColor: "rgb(76,150,151)" }}
+          >
+            <CardRecover token={token} />
           </div>
-          <div className="col d-none d-sm-block">c</div>
+          <div
+            className="col col-lg-4 p-0 d-none d-sm-block"
+            style={{ minHeight: "100vh", backgroundColor: "rgb(220,155,92)" }}
+          ></div>
         </div>
       </div>
     </>
