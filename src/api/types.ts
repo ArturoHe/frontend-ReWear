@@ -14,6 +14,13 @@ export interface Product {
   seller_id: number;
 }
 
+export interface ProductCart {
+  price: number | undefined;
+  description: string;
+  name_product: string;
+  product_id: number;
+}
+
 export interface ProductResponse {
   idproduct: number;
   seller_id: number;

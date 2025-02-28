@@ -35,6 +35,20 @@ function index({ title }: Props) {
   };
 
   const handleCart = async () => {
+    try {
+      const token = sessionStorage.getItem("jwtToken");
+      const response = await api.post(
+        "/cart/add",
+        {
+          productId: productData?.idproduct,
+          quantity: 1,
+        },
+        { headers: { Authorization: `${token}` } }
+      );
+    } catch (error) {
+      console.error("Error al agregar al carrito:", error);
+    }
+
     console.log("Agregado al carrito producto:", productData?.idproduct);
 
     const toastElement = document.getElementById("liveToast");

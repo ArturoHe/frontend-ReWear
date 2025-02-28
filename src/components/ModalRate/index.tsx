@@ -10,7 +10,7 @@ function index({}: Props) {
     event.preventDefault();
     console.log("rating", rating);
     console.log("description", event.currentTarget.description.value);
-    window.location.reload();
+    //window.location.reload();
   };
 
   const [rating, setRating] = useState(Number);

@@ -4,7 +4,7 @@ import LoginForm from "../LoginForm";
 import styles from "./style.module.css";
 import RegisterForm from "../RegisterForm";
 import RecoverPassForm from "../RecoverPassForm";
-import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import ButtonGoogle from "../ButtonGoogle";
 
 type Props = {};
@@ -45,7 +45,7 @@ function CardLogin({}: Props) {
                 />
               </div>
               <div className="my-3">
-                <GoogleOAuthProvider clientId="979740667016-70vefbdl48mdkjo0q2n1rk28uvold6ht.apps.googleusercontent.com">
+                <GoogleOAuthProvider clientId="979740667016-qeor1k8041jjuus9fab09fcddmknnkfh.apps.googleusercontent.com">
                   <div>
                     <ButtonGoogle />
                   </div>

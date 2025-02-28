@@ -1,5 +1,4 @@
 import api from "../../api/axiosConfig";
-import Button from "../Button";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 

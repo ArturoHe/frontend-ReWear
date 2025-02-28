@@ -1,9 +1,14 @@
 import { useSearchParams } from "react-router-dom";
 import CardRecover from "../../components/CardRecover";
+import { useEffect } from "react";
 
-type Props = {};
+type Props = { title: string };
 
-function index({}: Props) {
+function index({ title }: Props) {
+  useEffect(() => {
+    document.title = title;
+  });
+
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
 
