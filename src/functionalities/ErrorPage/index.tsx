@@ -9,11 +9,23 @@ function index({ title }: Props) {
   }, [title]);
 
   return (
-    <div className={`container-fluid ${styles.errorBackground} text-center`}>
-      <div className="container shadow-lg p-5 rounded">
-        <h1 className="pt-5" style={{ fontWeight: "bold", fontSize: "7rem" }}>
-          Ups, no encontramos esta pagina, pero puedes seguir navegando
-        </h1>
+    <div className={`container-fluid ${styles.errorBackground}`}>
+      <div className="row">
+        <div className="col-12 text-center">
+          <div
+            className="mt-5"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.8)",
+              padding: "1rem",
+              borderRadius: "30px",
+              filter: "drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5))",
+            }}
+          >
+            <h1>404</h1>
+            <h2>¡Ups!, Esta pagina no existe</h2>
+            <h3>Si crees que es un error, contacta con el administrador</h3>
+          </div>
+        </div>
       </div>
     </div>
   );

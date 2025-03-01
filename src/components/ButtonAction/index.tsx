@@ -2,16 +2,13 @@ import styles from "./style.module.css";
 
 type Props = {
   text: string;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset"; // Tipo de botón
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-function ButtonAction({ text, onClick, type = "button" }: Props) {
+function ButtonAction({ text, ...props }: Props) {
   return (
     <button
-      type={type}
       className={`btn btn-primary container-fluid ${styles.button}`}
-      onClick={onClick}
+      {...props}
     >
       {text}
     </button>

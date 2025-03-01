@@ -1,6 +1,7 @@
 .errorBackground {
   height: 100vh;
   background-image: url("/error.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }

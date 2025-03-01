@@ -1,14 +1,35 @@
 import { Link } from "react-router-dom";
+import Button from "../Button";
+import ButtonAction from "../ButtonAction";
+import api from "../../api/axiosConfig";
 
 type Props = {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-  price: string;
+  id?: number;
+  image?: string;
+  title?: string;
+  description?: string;
+  price?: string;
 };
 
 function index({ image, title, description, price, id }: Props) {
+  const handleDelete = async () => {
+    try {
+      const payload = {
+        productId: id?.toString(),
+      };
+
+      const token = sessionStorage.getItem("jwtToken");
+
+      await api.post("/cart/remove", payload, {
+        headers: { Authorization: token },
+      });
+    } catch (error) {
+      console.log("Error deleting product:", error);
+    }
+    alert("Producto eliminado");
+    window.location.reload();
+  };
+
   return (
     <div
       className="container-fluid mt-3 shadow position-relative"
@@ -31,10 +52,17 @@ function index({ image, title, description, price, id }: Props) {
           <div className="col-xs-6 col-lg-5">
             <h1>{title}</h1>
             <p>{description}</p>
-            <Link className="stretched-link" to={`/product/${id}`}></Link>
           </div>
           <div className="col-xs-6 col-lg-3">
             <h2>${price}</h2>
+            <div className="py-2">
+              <Link to={`/product/${id}`}>
+                <ButtonAction text="Ver Info" />
+              </Link>
+            </div>
+            <div>
+              <Button text="Eliminar" onClick={handleDelete} />
+            </div>
           </div>
         </div>
       </div>

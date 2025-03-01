@@ -13,6 +13,9 @@ import Layout from "./components/Layout";
 import ErrorPage from "./functionalities/ErrorPage";
 import PrivateRoute from "./components/PrivateRoute";
 import ProductEdit from "./components/ProductFormEdit";
+import Cart from "./functionalities/Cart";
+import History from "./functionalities/History";
+import RecoverPass from "./functionalities/RecoverPass";
 
 function App() {
   return (
@@ -21,6 +24,10 @@ function App() {
         {/* Ruta pública sin layout */}
         <Route path="/" element={<LandingPage title="ReWear | Landing" />} />
         <Route path="/login" element={<Login title="ReWear | Login" />} />
+        <Route
+          path="/actualizarcontrasena"
+          element={<RecoverPass title="ReWear | Recover" />}
+        />
 
         {/* Rutas con Layout */}
         <Route element={<Layout />}>
@@ -53,9 +60,20 @@ function App() {
             path="/product/:id"
             element={<Product title="ReWear | Product" />}
           />
+
           <Route
             path="/search/:filter"
             element={<Search title="ReWear | Search" />}
+          />
+
+          <Route
+            path="/cart"
+            element={<Cart title="ReWear | Configuración" />}
+          />
+
+          <Route
+            path="/history"
+            element={<History title="ReWear | Configuración" />}
           />
 
           <Route

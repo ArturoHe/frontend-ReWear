@@ -6,7 +6,7 @@ type Props = {
   id: number;
 
   name: string;
-  price: number;
+  price: string;
   onClick?: () => void;
   owner?: number;
 };
