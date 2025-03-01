@@ -55,6 +55,8 @@ function Index({ title }: Props) {
       price: product.price,
       description: product.description,
       seller_id: product.seller_id,
+      status: product.status,
+      publication_status: product.publication_status,
     }));
   };
 

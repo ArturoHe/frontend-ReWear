@@ -27,6 +27,8 @@ function Index({ title }: Props) {
         ? data.productInfo
         : [];
 
+      console.log("Products:", products);
+
       return productsData.map((product: Product) => ({
         id: product.id,
         name_product: product.name_product,
@@ -34,6 +36,8 @@ function Index({ title }: Props) {
         price: Number(product.price).toLocaleString("es-CO"),
         description: product.description,
         seller_id: product.seller_id,
+        publication_status: product.publication_status,
+        status: product.status,
       }));
     } catch (error) {
       console.error("Error fetching products", error);
@@ -67,6 +71,7 @@ function Index({ title }: Props) {
                     description={product.description}
                     image={"/texerror.jpg"}
                     price={product.price}
+                    quality={product.status}
                   />
                 )
               )

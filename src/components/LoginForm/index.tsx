@@ -44,7 +44,13 @@ function LoginForm({ onReturn, onRecoverPassword }: Props) {
         sessionStorage.setItem("username", username);
         sessionStorage.setItem("id", idUser);
 
-        window.location.href = "/home";
+        if (sessionStorage.getItem("redirectAfterLogin")) {
+          window.location.href = sessionStorage.getItem("redirectAfterLogin")!;
+          sessionStorage.removeItem("redirectAfterLogin");
+          return;
+        } else {
+          window.location.href = "/home";
+        }
       } else {
         alert("No se recibió un token");
       }

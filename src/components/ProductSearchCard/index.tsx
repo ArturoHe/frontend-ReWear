@@ -6,9 +6,10 @@ type Props = {
   title: string;
   description: string;
   price: string;
+  quality: string;
 };
 
-function index({ image, title, description, price, id }: Props) {
+function index({ image, title, description, price, id, quality }: Props) {
   return (
     <div
       className="container-fluid mt-3 shadow position-relative"
@@ -30,6 +31,7 @@ function index({ image, title, description, price, id }: Props) {
           </div>
           <div className="col-xs-6 col-lg-5">
             <h1>{title}</h1>
+            <h3>{`Calidad: ${quality}`}</h3>
             <p>{description}</p>
             <Link className="stretched-link" to={`/product/${id}`}></Link>
           </div>

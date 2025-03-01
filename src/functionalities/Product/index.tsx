@@ -46,20 +46,23 @@ function index({ title }: Props) {
         },
         { headers: { Authorization: `${token}` } }
       );
+
+      const toastElement = document.getElementById("liveToast");
+
+      if (toastElement) {
+        const toastInstance = new Toast(toastElement);
+        toastInstance.show();
+      } else {
+        console.error("No se encontró el toast en el DOM.");
+      }
     } catch (error) {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+
+      window.location.href = "/login";
       console.error("Error al agregar al carrito:", error);
     }
 
     console.log("Agregado al carrito producto:", productData?.idproduct);
-
-    const toastElement = document.getElementById("liveToast");
-
-    if (toastElement) {
-      const toastInstance = new Toast(toastElement);
-      toastInstance.show();
-    } else {
-      console.error("No se encontró el toast en el DOM.");
-    }
   };
 
   const handleEdit = async () => {
@@ -91,7 +94,17 @@ function index({ title }: Props) {
           <div className="col-12">
             <div className="row">
               <div className="col-lg-9">
-                <div className="container m-3">
+                <div className="container my-1">
+                  <div className="d-flex flex-row justify-content-between mb-4">
+                    {!isSelf ? (
+                      <ButtonAction
+                        text="Agregar Al Carrito"
+                        onClick={handleCart}
+                      />
+                    ) : (
+                      <Button text="Editar Producto" onClick={handleEdit} />
+                    )}
+                  </div>
                   <TextProduct
                     productName={productData?.name_product || ""}
                     description={productData?.description || ""}
@@ -101,16 +114,6 @@ function index({ title }: Props) {
                     )}
                     quality={productData?.status || 0}
                   />
-                </div>
-                <div className="d-flex flex-row justify-content-between">
-                  {!isSelf ? (
-                    <ButtonAction
-                      text="Agregar Al Carrito"
-                      onClick={handleCart}
-                    />
-                  ) : (
-                    <Button text="Editar Producto" onClick={handleEdit} />
-                  )}
                 </div>
               </div>
               <div className="col-lg-3">

@@ -12,6 +12,8 @@ export interface Product {
   price: string;
   description: string;
   seller_id: number;
+  status: string;
+  publication_status: string;
 }
 
 export interface ProductCart {
