@@ -23,7 +23,7 @@ function CardLogin({ token }: Props) {
 
     if (verify.password == verify.password2) {
       try {
-        const response = await api.post("/update-password", payload);
+        await api.post("/update-password", payload);
         alert("Cambio de contraseña exitoso");
         window.location.href = "/login";
       } catch (error) {

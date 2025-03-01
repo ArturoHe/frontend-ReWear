@@ -6,12 +6,12 @@ import { useParams } from "react-router-dom";
 import { ProductResponse } from "../../api/types";
 import api from "../../api/axiosConfig";
 import Button from "../../components/Button";
-import ButtonAction from "../../components/ButtonAction";
 
 // Importa Bootstrap correctamente
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Toast } from "bootstrap";
+import ButtonAction from "../../components/ButtonAction";
 
 type Props = { title: string };
 
@@ -20,24 +20,25 @@ function index({ title }: Props) {
     document.title = title;
   }, [title]);
 
+  const userLogged = sessionStorage.getItem("username");
+  console.log("Usuario logueado:", userLogged);
+
   const { id } = useParams<{ id: string }>();
   const [productData, setproductData] = useState<ProductResponse | null>(null);
 
   const fetchProduct = async (id: string) => {
     const response = await api.get(`/product/${id}`);
     const data: ProductResponse = response.data as ProductResponse;
-    console.log(data);
+    console.log(data.username);
     setproductData(data);
   };
 
-  const handleBuy = async () => {
-    console.log("Comprar", productData?.idproduct);
-  };
+  const isSelf = userLogged === productData?.username;
 
   const handleCart = async () => {
     try {
       const token = sessionStorage.getItem("jwtToken");
-      const response = await api.post(
+      await api.post(
         "/cart/add",
         {
           productId: productData?.idproduct,
@@ -60,6 +61,12 @@ function index({ title }: Props) {
       console.error("No se encontró el toast en el DOM.");
     }
   };
+
+  const handleEdit = async () => {
+    window.location.href = `/editproduct/${id}`;
+  };
+
+  console.log("Producto:", productData);
 
   useEffect(() => {
     if (id) {
@@ -89,12 +96,21 @@ function index({ title }: Props) {
                     productName={productData?.name_product || ""}
                     description={productData?.description || ""}
                     category={productData?.category || ""}
-                    price={parseFloat(productData?.price || "0")}
+                    price={Number(productData?.price || "0").toLocaleString(
+                      "es-CO"
+                    )}
+                    quality={productData?.status || 0}
                   />
                 </div>
                 <div className="d-flex flex-row justify-content-between">
-                  <ButtonAction text="Comprar" onClick={handleBuy} />
-                  <Button text="Agregar Al Carrito" onClick={handleCart} />
+                  {!isSelf ? (
+                    <ButtonAction
+                      text="Agregar Al Carrito"
+                      onClick={handleCart}
+                    />
+                  ) : (
+                    <Button text="Editar Producto" onClick={handleEdit} />
+                  )}
                 </div>
               </div>
               <div className="col-lg-3">

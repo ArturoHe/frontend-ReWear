@@ -59,7 +59,7 @@ function EditUserForm({}: Props) {
     const payload = {
       myImage: formData.get("myImage"),
     };
-    console.log(payload);
+    console.log(handleSubmitPhoto, payload);
 
     console.log("Formulario enviado");
   };

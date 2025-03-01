@@ -5,7 +5,7 @@ type Props = {
   image: string;
   title: string;
   description: string;
-  price: number;
+  price: string;
 };
 
 function index({ image, title, description, price, id }: Props) {

@@ -9,7 +9,7 @@ export interface Product {
   id: number;
   name_product: string;
   category: string;
-  price: number;
+  price: string;
   description: string;
   seller_id: number;
 }

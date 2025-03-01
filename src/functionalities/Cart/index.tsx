@@ -67,7 +67,7 @@ function Index({ title }: Props) {
                 image="https://softmanagement.com.co/wp-content/uploads/2024/10/placeholder.png"
                 title={product.name_product}
                 description={product.description}
-                price={product.price}
+                price={Number(product.price).toLocaleString("es-CO")}
               />
             ))
           ) : (
@@ -83,15 +83,27 @@ function Index({ title }: Props) {
           >
             <h1>Carrito</h1>
             <hr />
-            <div className="row">
-              <div className="col-9">HOLA</div>
-              <div className="col-3">100</div>
-            </div>
+
+            {products.map((product) => (
+              <div className="row">
+                <div className="col-9">{product.name_product}</div>
+                <div className="col-3">
+                  {Number(product.price).toLocaleString("es-CO")}
+                </div>
+              </div>
+            ))}
+
             <hr />
+
             <div className="row">
               <div className="col-9">Total</div>
-              <div className="col-3">700</div>
+              <div className="col-3">
+                {products
+                  .reduce((acc, product) => acc + Number(product.price ?? 0), 0)
+                  .toLocaleString("es-CO")}
+              </div>
             </div>
+
             <div className="m-4">
               <ButtonAction text="Comprar" />
             </div>

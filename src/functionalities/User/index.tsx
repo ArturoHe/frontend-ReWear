@@ -93,7 +93,7 @@ function Index({ title }: Props) {
                     <MiniCardProducts
                       key={product.id}
                       id={product.id}
-                      price={product.price}
+                      price={Number(product.price).toLocaleString("es-CO")}
                       owner={product.seller_id}
                       name={product.name_product}
                     />

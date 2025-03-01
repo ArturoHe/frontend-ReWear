@@ -8,7 +8,7 @@ type Props = {
   image?: string;
   title?: string;
   description?: string;
-  price?: number;
+  price?: string;
 };
 
 function index({ image, title, description, price, id }: Props) {
@@ -19,7 +19,8 @@ function index({ image, title, description, price, id }: Props) {
       };
 
       const token = sessionStorage.getItem("jwtToken");
-      const response = await api.post("/cart/remove", payload, {
+
+      await api.post("/cart/remove", payload, {
         headers: { Authorization: token },
       });
     } catch (error) {

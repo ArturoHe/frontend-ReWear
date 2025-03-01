@@ -31,7 +31,7 @@ function Index({ title }: Props) {
         id: product.id,
         name_product: product.name_product,
         category: product.category,
-        price: product.price,
+        price: Number(product.price).toLocaleString("es-CO"),
         description: product.description,
         seller_id: product.seller_id,
       }));

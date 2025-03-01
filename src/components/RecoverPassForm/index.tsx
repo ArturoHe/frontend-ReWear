@@ -19,7 +19,7 @@ function RecoverPassForm({ onReturn }: Props) {
     };
 
     try {
-      const response = await api.post("/forgot-password", payload);
+      await api.post("/forgot-password", payload);
 
       alert("Se ha enviado un correo para recuperar tu contraseña");
       window.location.href = "/";
