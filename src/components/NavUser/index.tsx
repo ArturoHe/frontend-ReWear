@@ -10,12 +10,8 @@ function NavUser({}: Props) {
   return (
     <nav className={`navbar ${styles.navColorRewear} p-0`}>
       <div className="container-fluid">
-        <Link
-          className={`navbar-brand ${styles.s}`}
-          style={{ fontSize: "1.5rem" }}
-          to="/cart"
-        >
-          <TiShoppingCart />
+        <Link className={`navbar-brand ${styles.s}`} to="/cart">
+          <TiShoppingCart fontSize={"1.5rem"} />
         </Link>
 
         <div className="d-flex">

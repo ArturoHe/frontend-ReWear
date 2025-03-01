@@ -56,7 +56,7 @@ function index({}: Props) {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows={3}
-            placeholder="Dejanos saber cual es tu opinion"
+            placeholder="Dejanos saber cual es tu opinion acerca de este vendedor"
           ></textarea>
         </div>
 

@@ -44,24 +44,9 @@ function Index({ title }: Props) {
         })
       );
 
-      setProducts(detailedProducts);
-
-      /*productsData.forEach(async (product) => {
-        try {
-          const cardData = await api.get<{
-            name_product: string;
-            description: string;
-            price: number;
-          }>(`/product/${product.product_id}`);
-
-          cartData.push({
-            name_product: cardData.data.name_product,
-            description: cardData.data.description,
-            price: cardData.data.price,
-            product_id: product.product_id,
-          });
-        } catch (error) {}
-      });*/
+      setProducts(
+        detailedProducts.filter((p) => p !== undefined) as ProductCart[]
+      );
 
       console.log("Productos en el carrito:", productsData);
     } catch (error) {

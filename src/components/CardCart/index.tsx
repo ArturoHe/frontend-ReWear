@@ -14,10 +14,13 @@ type Props = {
 function index({ image, title, description, price, id }: Props) {
   const handleDelete = async () => {
     try {
+      const payload = {
+        productId: id?.toString(),
+      };
+
       const token = sessionStorage.getItem("jwtToken");
-      const response = await api.delete("/cart/delete", {
+      const response = await api.post("/cart/remove", payload, {
         headers: { Authorization: token },
-        data: { productId: id },
       });
     } catch (error) {
       console.log("Error deleting product:", error);
