@@ -70,14 +70,19 @@ function LoginForm({}: Props) {
       </div>
       <div className="my-3">
         <label htmlFor="category" className="form-label"></label>
-        <input
-          required
+
+        <select
+          className="form-select"
+          aria-label="Default select example"
           name="category"
-          type="text"
-          className={`form-control ${styles.loginSlot}`}
-          id="productCategory"
-          placeholder="Categoria"
-        />
+        >
+          <option selected>-Categoria-</option>
+          <option value="Casual">Casual</option>
+          <option value="Deportiva">Deportiva</option>
+          <option value="Formal">Formal</option>
+          <option value="Urbana">Urbana</option>
+          <option value="Vintage">Vintage</option>
+        </select>
       </div>
 
       <div className="my-3">

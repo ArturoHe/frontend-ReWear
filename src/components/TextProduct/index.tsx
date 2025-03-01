@@ -22,7 +22,13 @@ function index({ productName, price, category, description, quality }: Props) {
       <h5 className="my-3" style={{ fontSize: "1rem" }}>
         Descripcion:
         <div className="mt-2">
-          <p style={{ overflowWrap: "break-word" }}>{description}</p>
+          <p
+            style={{
+              overflowWrap: "break-word",
+            }}
+          >
+            {description}
+          </p>
         </div>
       </h5>
     </>

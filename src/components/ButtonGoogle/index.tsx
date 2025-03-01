@@ -37,8 +37,14 @@ function Index({}: Props) {
               console.log("Error en la solicitud de datos:", error);
             }
 
-            alert("Sesion con Google iniciada correctamente");
-            window.location.href = "/home";
+            if (sessionStorage.getItem("redirectAfterLogin")) {
+              window.location.href =
+                sessionStorage.getItem("redirectAfterLogin")!;
+              sessionStorage.removeItem("redirectAfterLogin");
+              return;
+            } else {
+              window.location.href = "/home";
+            }
           } catch (error) {
             console.log("Error en la solicitud:", error);
           }
