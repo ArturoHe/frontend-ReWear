@@ -16,6 +16,9 @@ import ProductEdit from "./components/ProductFormEdit";
 import Cart from "./functionalities/Cart";
 import History from "./functionalities/History";
 import RecoverPass from "./functionalities/RecoverPass";
+import CartFail from "./functionalities/CartFail";
+import CartPending from "./functionalities/CartPending";
+import CartSuccess from "./functionalities/CartSuccess";
 
 function App() {
   return (
@@ -53,6 +56,27 @@ function App() {
             <Route
               path="/editproduct/:id"
               element={<ProductEdit title="ReWear | Edit" />}
+            />
+          </Route>
+
+          <Route element={<PrivateRoute />}>
+            <Route
+              path="/success"
+              element={<CartSuccess title="ReWear | Edit" />}
+            />
+          </Route>
+
+          <Route element={<PrivateRoute />}>
+            <Route
+              path="/failure"
+              element={<CartFail title="ReWear | Edit" />}
+            />
+          </Route>
+
+          <Route element={<PrivateRoute />}>
+            <Route
+              path="/pending"
+              element={<CartPending title="ReWear | Edit" />}
             />
           </Route>
 

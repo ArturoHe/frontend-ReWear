@@ -4,6 +4,11 @@ import { ProductCart } from "../../api/types";
 import api from "../../api/axiosConfig";
 import CardCart from "../../components/CardCart";
 
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+initMercadoPago("APP_USR-325d6d81-d38c-4b7f-ae48-23ef19653cc4", {
+  locale: "es-CO",
+});
+
 type Props = { title: string };
 
 function Index({ title }: Props) {
@@ -51,6 +56,43 @@ function Index({ title }: Props) {
       console.log("Productos en el carrito:", productsData);
     } catch (error) {
       console.error("Error fetching products:", error);
+    }
+  };
+
+  const [preferenceId, setPreferenceId] = useState<string | null>(null);
+
+  const payload = {
+    items: products.map((product) => ({
+      title: product.name_product,
+      quantity: 1,
+      unit_price: Number(product.price),
+    })),
+  };
+
+  const createPreference = async () => {
+    try {
+      const response = await api.post<{ preference_id: string }>(
+        "/payment/create_preference",
+        payload
+      );
+
+      const preferenceId = response.data.preference_id;
+      console.log("preferenceId:", preferenceId);
+
+      return preferenceId;
+    } catch (error) {
+      console.error("Error creating preference:", error);
+    }
+  };
+
+  const handleBuy = async () => {
+    const id = await createPreference();
+    console.log("preferenceId:", preferenceId);
+
+    if (id) {
+      setPreferenceId(id);
+    } else {
+      alert("Error al crear la preferencia de pago");
     }
   };
 
@@ -105,7 +147,11 @@ function Index({ title }: Props) {
             </div>
 
             <div className="m-4">
-              <ButtonAction text="Comprar" />
+              <ButtonAction text="Comprar" onClick={handleBuy} />
+
+              {preferenceId && (
+                <Wallet initialization={{ preferenceId: preferenceId }} />
+              )}
             </div>
           </div>
         </div>
