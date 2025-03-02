@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -29,43 +30,39 @@ const Carousel: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <section className="hero">
-      <div className="hero-carousel">
+    <section className="Hhero">
+      <div className="Hhero-carousel">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`hero-slide ${
+            className={`Hhero-slide ${
               index === currentSlide ? "active" : ""
             }`}
             style={{ backgroundImage: `url(${slide.image})` }}
           >
-            <div className="hero-content">
+            <div className="Hhero-content">
               <div style={{
                 padding: '2rem',
-                borderRadius: '1rem',
                 display: 'flex',
                 flexDirection: 'column',
               }} className="container">
                 <h1 style={{
                   color: 'white',
                   fontWeight: 'bold',
-                }} className="hero-title">{slide.title}</h1>
+                }} className="Hhero-title">{slide.title}</h1>
                 <p style={{
                   color: 'white',
-                }} className="hero-subtitle">{slide.subtitle}</p>
-                <button className="button button-primary">
-                  Ver colección
-                </button>
+                }} className="Hhero-subtitle">{slide.subtitle}</p>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="hero-indicators">
+      <div className="Hhero-indicators">
         {heroSlides.map((_, index) => (
           <button
             key={index}
-            className={`hero-indicator ${
+            className={`Hhero-indicator ${
               index === currentSlide ? "active" : ""
             }`}
             onClick={() => setCurrentSlide(index)}
