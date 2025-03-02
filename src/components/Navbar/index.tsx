@@ -1,6 +1,5 @@
-import './style.css';
+import "./style.css";
 import { Link } from "react-router-dom";
-import Button from "../Button";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 import { IoIosSearch } from "react-icons/io";
@@ -51,7 +50,9 @@ function index({}: Props) {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}>
+    <nav
+      className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navColorRewear}`}
+    >
       <div className="container">
         <div className="header-content">
           <Link to="/" className="logo">
@@ -70,8 +71,12 @@ function index({}: Props) {
               <IoIosSearch />
             </button>
           </form>
-          
-          <button className="menu-toggle" aria-label="Abrir menú" onClick={toggleMenu}>
+
+          <button
+            className="menu-toggle"
+            aria-label="Abrir menú"
+            onClick={toggleMenu}
+          >
             ☰
           </button>
 
