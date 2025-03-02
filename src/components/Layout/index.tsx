@@ -10,7 +10,6 @@ function index({}: Props) {
   return (
     <>
       <Navbar />
-      {token && <NavUser />}
       <main>
         <Outlet />
       </main>
