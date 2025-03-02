@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
-import { get } from "axios";
 import api from "../../api/axiosConfig";
 import Button from "../Button";
 
@@ -47,7 +46,7 @@ function EditUserForm({}: Props) {
 
   const handleDelete = async () => {
     try {
-      const response = await api.delete("/eliminarperfil", {
+      await api.delete("/eliminarperfil", {
         headers: { Authorization: sessionStorage.getItem("jwtToken") },
       });
       alert("Usuario eliminado");
