@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
-import { get } from "axios";
 import api from "../../api/axiosConfig";
 import Button from "../Button";
 
@@ -16,8 +15,9 @@ function EditUserForm({}: Props) {
     }
   };
 
-  const handleUpload = async () => {
-    event?.preventDefault();
+  const handleUpload = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     if (!file) {
       alert("Por favor selecciona un archivo");
       return;
@@ -26,13 +26,28 @@ function EditUserForm({}: Props) {
     const formData = new FormData();
     formData.append("image", file); // "image" debe coincidir con el nombre que espera el backend
 
+    console.log(formData);
+
+    try {
+      const Response = await api.put("/profile/image", formData, {
+        headers: {
+          Authorization: sessionStorage.getItem("jwtToken"),
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      alert("Imagen de perfil actualizada");
+
+      console.log(Response);
+    } catch (error) {}
+
     console.log(file);
     console.log("Formulario enviado");
   };
 
   const handleDelete = async () => {
     try {
-      const response = await api.delete("/eliminarperfil", {
+      await api.delete("/eliminarperfil", {
         headers: { Authorization: sessionStorage.getItem("jwtToken") },
       });
       alert("Usuario eliminado");

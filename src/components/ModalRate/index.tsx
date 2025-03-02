@@ -3,7 +3,10 @@ import { FaStar } from "react-icons/fa";
 import { useState } from "react";
 import ButtonAction from "../ButtonAction";
 
-type Props = {};
+type Props = {
+  idSeller: string;
+  idProduct: string;
+};
 
 function index({}: Props) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

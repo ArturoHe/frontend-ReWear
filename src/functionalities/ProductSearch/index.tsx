@@ -38,6 +38,7 @@ function Index({ title }: Props) {
         seller_id: product.seller_id,
         publication_status: product.publication_status,
         status: product.status,
+        image_path: product.image_path,
       }));
     } catch (error) {
       console.error("Error fetching products", error);
@@ -69,7 +70,7 @@ function Index({ title }: Props) {
                     key={product.id}
                     title={product.name_product}
                     description={product.description}
-                    image={"/texerror.jpg"}
+                    image={product.image_path}
                     price={product.price}
                     quality={product.status}
                   />

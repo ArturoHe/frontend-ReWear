@@ -9,9 +9,10 @@ type Props = {
   price: string;
   onClick?: () => void;
   owner?: number;
+  imageProduct: string;
 };
 
-function index({ name, price, owner, id }: Props) {
+function index({ name, price, owner, id, imageProduct }: Props) {
   const userID = sessionStorage.getItem("id");
 
   const isSelf =
@@ -43,7 +44,7 @@ function index({ name, price, owner, id }: Props) {
         }}
       >
         <img
-          src="/texerror.jpg"
+          src={imageProduct}
           className="card-img-top"
           alt="..."
           style={{ height: "50%", objectFit: "cover" }}
