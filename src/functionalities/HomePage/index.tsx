@@ -1,3 +1,4 @@
+import './style.css'
 import Carousel from "../../components/Carousel";
 import Categories from "../../components/Categories";
 import { useEffect } from "react";
@@ -12,15 +13,10 @@ function HomePage({ title }: Props) {
   });
 
   return (
-    <div>
-      <div className="container-fluid">
-        <Carousel />
-      </div>
-
-      <div className="container-fluid">
-        <Categories />
-      </div>
-    </div>
+    <main>
+      <Carousel />
+      <Categories />
+    </main>
   );
 }
 

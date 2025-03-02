@@ -25,6 +25,7 @@ function LoginForm({}: Props) {
       return;
     }
 
+    // Creamos el FormData y agregamos todos los campos manualmente
     const formData = new FormData();
     formData.append("name_product", event.currentTarget.name_product.value);
     formData.append("category", event.currentTarget.category.value);
@@ -34,11 +35,7 @@ function LoginForm({}: Props) {
     formData.append("publication_status", "available");
     formData.append("image", file);
 
-    console.log("FormData:", formData);
-
     const token = sessionStorage.getItem("jwtToken");
-
-    console.log(token);
 
     if (!token) {
       alert("No hay sesión iniciada");
@@ -52,8 +49,6 @@ function LoginForm({}: Props) {
           "Content-Type": "multipart/form-data",
         },
       });
-
-      console.log("response", response);
 
       const idNew = response.data as ProductCreate;
       window.location.href = `/product/${idNew.productId}`;
@@ -74,16 +69,23 @@ function LoginForm({}: Props) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="my-3">
+        <label htmlFor="name_product" className="form-label"></label>
         <input
           required
           name="name_product"
           type="text"
           className={`form-control ${styles.loginSlot}`}
+          id="productName"
           placeholder="Nombre del producto"
         />
       </div>
       <div className="my-3">
-        <select className="form-select" name="category">
+        <label htmlFor="category" className="form-label"></label>
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          name="category"
+        >
           <option value="">-Categoria-</option>
           <option value="Casual">Casual</option>
           <option value="Deportiva">Deportiva</option>
@@ -93,18 +95,22 @@ function LoginForm({}: Props) {
         </select>
       </div>
       <div className="my-3">
+        <label htmlFor="price" className="form-label"></label>
         <input
           required
           name="price"
           type="number"
           className={`form-control ${styles.loginSlot}`}
+          id="price"
           placeholder="Precio"
         />
       </div>
       <div className="my-3">
+        <label htmlFor="description" className="form-label"></label>
         <textarea
           name="description"
           className="form-control"
+          id="exampleFormControlTextarea1"
           rows={3}
           placeholder="Descripcion"
         ></textarea>
