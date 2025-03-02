@@ -86,9 +86,7 @@ function index({ title }: Props) {
               className="d-flex flex-nowrap overflow-auto py-4"
               style={{ gap: "1rem" }}
             >
-              <ImagesProductCard image="/texerror.jpg" />
-              <ImagesProductCard image="/texerror.jpg" />
-              <ImagesProductCard image="/texerror.jpg" />
+              <ImagesProductCard image={productData?.image_path || ""} />
             </div>
           </div>
           <div className="col-12">

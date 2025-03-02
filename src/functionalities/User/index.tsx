@@ -57,6 +57,7 @@ function Index({ title }: Props) {
       seller_id: product.seller_id,
       status: product.status,
       publication_status: product.publication_status,
+      image_path: product.image_path,
     }));
   };
 
@@ -75,7 +76,7 @@ function Index({ title }: Props) {
               <p>Cargando información del usuario...</p>
             ) : userData ? (
               <UserPanelLeft
-                profileImage={userData.profileImage || "/cuadrado.jpg"}
+                profileImage={userData.image_perfil || "/cuadrado.jpg"}
                 userName={userData.username}
                 description={userData.description}
               />
@@ -98,6 +99,7 @@ function Index({ title }: Props) {
                       price={Number(product.price).toLocaleString("es-CO")}
                       owner={product.seller_id}
                       name={product.name_product}
+                      imageProduct={product.image_path}
                     />
                   ))}
                 </div>
@@ -109,8 +111,8 @@ function Index({ title }: Props) {
                 <div className="row row-cols-1" style={{ gap: "3rem" }}>
                   <PersonalComments
                     userImage="/parmero.jpeg"
-                    userName="Pablo Armero"
-                    comment="hola test"
+                    userName="T.est"
+                    comment="hola, excelente vendedor, muy confiable"
                   />
                 </div>
               </div>

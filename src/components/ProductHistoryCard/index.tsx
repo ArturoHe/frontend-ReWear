@@ -79,7 +79,7 @@ function index({ image, title, description, price, date }: Props) {
               ></button>
             </div>
             <div className="modal-body">
-              <ModalRate />
+              <ModalRate idProduct="" idSeller="" key={0} />
             </div>
           </div>
         </div>
