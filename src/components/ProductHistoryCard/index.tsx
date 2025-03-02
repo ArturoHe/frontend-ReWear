@@ -1,7 +1,6 @@
 import ButtonAction from "../ButtonAction";
 import Button from "../Button";
 import ModalRate from "../ModalRate";
-import { Link } from "react-router-dom";
 
 type Props = {
   id: number;
