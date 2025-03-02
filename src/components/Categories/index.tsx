@@ -1,31 +1,54 @@
 import React from "react";
-import styles from "./style.module.css";
-import infantil from "./infantil.png";
-import mujer from "./mujer.png";
-import hombre from "./hombre.png";
-import unisex from "./unisex.png";
+import CategoryCard from "../CategoryCard";
 
 const Categories: React.FC = () => {
+  
   const categories = [
-    { name: "Infantil", image: infantil },
-    { name: "Mujer", image: mujer },
-    { name: "Hombre", image: hombre },
-    { name: "Unisex", image: unisex },
+    {
+      id: 1,
+      name: "Infantil",
+      image: "/infantil.png",
+      description: "Ropa de segunda mano para niños y niñas",
+    },
+    {
+      id: 2,
+      name: "Mujer",
+      image: "/mujer.png",
+      description: "Moda sostenible para mujeres",
+    },
+    {
+      id: 3,
+      name: "Hombre",
+      image: "/hombre.png",
+      description: "Ropa de segunda mano para hombres",
+    },
+    {
+      id: 4,
+      name: "Unisex",
+      image: "/unisex.png",
+      description: "Moda sin género",
+    },
   ];
 
   return (
-    <div className={`mt-5 ${styles.container}`}>
-      {categories.map((category) => (
-        <div key={category.name} className={`text-center ${styles.card}`}>
-          <img
-            src={category.image}
-            alt={category.name}
-            className={styles.image}
-          />
-          <h5 className={styles.title}>{category.name}</h5>
+    <section className="categories">
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }} className="container">
+        <h2 className="section-title">Categorías</h2>
+        <div style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-around",
+          gap: "1rem",
+        }} className="categories-grid">
+          {categories.map((category) => (
+            <CategoryCard key={category.id} category={category} />
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </section>
   );
 };
 
