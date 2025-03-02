@@ -1,7 +1,7 @@
 export interface User {
   id: number;
   username: string;
-  image_perfil: string;
+  profileImage: string;
   description: string;
 }
 
@@ -14,7 +14,6 @@ export interface Product {
   seller_id: number;
   status: string;
   publication_status: string;
-  image_path: string;
 }
 
 export interface ProductCart {
@@ -33,7 +32,6 @@ export interface ProductResponse {
   description: string;
   category: string;
   status: number;
-  image_path: string;
 }
 
 export interface ProductCreate {
