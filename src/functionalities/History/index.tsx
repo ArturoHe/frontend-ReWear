@@ -16,31 +16,7 @@ function index({ title }: Props) {
         description="Lorem ipsum dolor sit amet."
         image="/texerror.jpg"
         price={100}
-        date="2021-10-10"
-      />
-      <ProductHistoryCard
-        id={1}
-        title="TEST"
-        description="Lorem ipsum dolor sit amet."
-        image="/texerror.jpg"
-        price={100}
-        date="2021-10-10"
-      />
-      <ProductHistoryCard
-        id={1}
-        title="TEST"
-        description="Lorem ipsum dolor sit amet."
-        image="/texerror.jpg"
-        price={100}
-        date="2021-10-10"
-      />
-      <ProductHistoryCard
-        id={1}
-        title="TEST"
-        description="Lorem ipsum dolor sit amet."
-        image="/texerror.jpg"
-        price={100}
-        date="2021-10-10"
+        date="2025-02-28"
       />
     </>
   );

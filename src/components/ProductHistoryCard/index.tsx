@@ -1,6 +1,7 @@
 import ButtonAction from "../ButtonAction";
 import Button from "../Button";
 import ModalRate from "../ModalRate";
+import { Link } from "react-router-dom";
 
 type Props = {
   id: number;
@@ -14,6 +15,8 @@ type Props = {
 function index({ image, title, description, price, date }: Props) {
   const handleInfo = () => {
     console.log("Info");
+
+    window.location.href = "/user/test";
   };
 
   return (
@@ -44,7 +47,7 @@ function index({ image, title, description, price, date }: Props) {
               <h2>${price}</h2>
               <p>{`Fecha de compra: ${date}`}</p>
               <div className="my-2">
-                <Button text="Ver Info" onClick={handleInfo} />
+                <Button text="Ver Info Vendedor" onClick={handleInfo} />
               </div>
               <div>
                 <ButtonAction
