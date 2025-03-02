@@ -55,7 +55,7 @@ function index({}: Props) {
     >
       <div className="container">
         <div className="header-content">
-          <Link to="/" className="logo">
+          <Link to="/home" className="logo">
             <img src="/logo.png" alt="ReWear Logo" className="logo-image" />
           </Link>
 
