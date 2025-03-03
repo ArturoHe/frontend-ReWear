@@ -3,7 +3,7 @@ import ImagesProductCard from "../../components/ImagesProductCard";
 import UserPanelLeft from "../../components/UserPanelLeft";
 import TextProduct from "../../components/TextProduct";
 import { useParams } from "react-router-dom";
-import { ProductResponse } from "../../api/types";
+import { ProductResponse, User } from "../../api/types";
 import api from "../../api/axiosConfig";
 import Button from "../../components/Button";
 
@@ -25,12 +25,26 @@ function index({ title }: Props) {
 
   const { id } = useParams<{ id: string }>();
   const [productData, setproductData] = useState<ProductResponse | null>(null);
+  const [userData, setUserData] = useState<User | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   const fetchProduct = async (id: string) => {
     const response = await api.get(`/product/${id}`);
     const data: ProductResponse = response.data as ProductResponse;
-    console.log(data.username);
+
+    setUsername(data.username);
     setproductData(data);
+  };
+
+  const fetchUser = async (user: string) => {
+    try {
+      const response = await api.get(`/user/${user}`);
+      const data: User = response.data as User;
+
+      setUserData(data);
+    } catch (error) {
+      console.error("Error al cargar los datos del usuario", error);
+    }
   };
 
   const isSelf = userLogged === productData?.username;
@@ -74,8 +88,9 @@ function index({ title }: Props) {
   useEffect(() => {
     if (id) {
       fetchProduct(id);
+      fetchUser(username || "");
     }
-  }, [id]);
+  }, [id, username]);
 
   return (
     <>
@@ -116,7 +131,7 @@ function index({ title }: Props) {
               </div>
               <div className="col-lg-3">
                 <UserPanelLeft
-                  profileImage="/cuadrado.jpg"
+                  profileImage={userData?.image_perfil || "/cuadrado.jpg"}
                   userName={productData?.username || ""}
                 />
               </div>

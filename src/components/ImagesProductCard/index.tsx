@@ -7,7 +7,7 @@ function index({ image }: Props) {
         src={image}
         className="card-img"
         alt="..."
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "contain", height: "15rem" }}
       />
       <div className="card-img-overlay"></div>
     </div>

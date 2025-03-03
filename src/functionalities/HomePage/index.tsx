@@ -1,4 +1,4 @@
-import './style.css'
+import "./style.css";
 import Carousel from "../../components/Carousel";
 import Categories from "../../components/Categories";
 import { useEffect } from "react";

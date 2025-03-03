@@ -5,6 +5,12 @@ export interface User {
   description: string;
 }
 
+export interface Comment {
+  data: any;
+  user_id: string;
+  comment: string;
+}
+
 export interface Product {
   id: number;
   name_product: string;
