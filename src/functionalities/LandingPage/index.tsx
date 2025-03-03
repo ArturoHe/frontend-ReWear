@@ -1,7 +1,13 @@
-import { useEffect } from "react";
+import './style.css'
 
-import LandingPageFirst from "../../components/LandingPageFirst";
-import LandingPageSecond from "../../components/LandingPageSecond";
+import { useEffect } from "react";
+import Header from "../../components/Header";
+import Hero from "../../components/Hero";
+import About from "../../components/About";
+import Mission from "../../components/Mission";
+import Testimonials from "../../components/Testimonials";
+import Footer from "../../components/Footer";
+
 
 type Props = { title: string };
 
@@ -11,10 +17,14 @@ function LandingPage({ title }: Props) {
   });
 
   return (
-    <>
-      <LandingPageFirst />
-      <LandingPageSecond />
-    </>
+    <div className="app">
+      <Header />
+      <Hero />
+      <About />
+      <Mission />
+      <Testimonials />
+      <Footer />
+    </div>
   );
 }
 

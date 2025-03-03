@@ -1,89 +1,75 @@
-import React from "react";
-import styles from "./style.module.css";
-import producto from "./productos_destacados.png";
-import novedad from "./novedades.png";
-import promocion from "./promociones.png";
+
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
+
+const heroSlides = [
+  {
+    image: "/novedades.png",
+    title: "Novedades de Verano",
+    subtitle: "Descubre las últimas tendencias para esta temporada",
+  },
+  {
+    image: "/productos_destacados.png",
+    title: "Colección Sostenible",
+    subtitle: "Moda que cuida el planeta",
+  },
+  {
+    image: "/promociones.png",
+    title: "Ofertas Especiales",
+    subtitle: "Hasta 50% de descuento en selección de productos",
+  },
+];
+
 const Carousel: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
   return (
-    <div
-      id="carouselExampleCaptions"
-      className={`carousel slide mt-4 ${styles.carousel}`}
-    >
-      <div className="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          className="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
+    <section className="Hhero">
+      <div className="Hhero-carousel">
+        {heroSlides.map((slide, index) => (
+          <div
+            key={index}
+            className={`Hhero-slide ${
+              index === currentSlide ? "active" : ""
+            }`}
+            style={{ backgroundImage: `url(${slide.image})` }}
+          >
+            <div className="Hhero-content">
+              <div style={{
+                padding: '2rem',
+                display: 'flex',
+                flexDirection: 'column',
+              }} className="container">
+                <h1 style={{
+                  color: 'white',
+                  fontWeight: 'bold',
+                }} className="Hhero-title">{slide.title}</h1>
+                <p style={{
+                  color: 'white',
+                }} className="Hhero-subtitle">{slide.subtitle}</p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          <img
-            src={novedad}
-            alt="Novedades"
-            className={`d-block w-100 ${styles.image}`}
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h3>Novedades</h3>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <img
-            src={producto}
-            alt="Productos destacados"
-            className={`d-block w-100 ${styles.image}`}
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h3>Productos destacados</h3>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <img
-            src={promocion}
-            alt="Promociones"
-            className={`d-block w-100 ${styles.image}`}
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h3>Promociones</h3>
-          </div>
-        </div>
+      <div className="Hhero-indicators">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            className={`Hhero-indicator ${
+              index === currentSlide ? "active" : ""
+            }`}
+            onClick={() => setCurrentSlide(index)}
+          ></button>
+        ))}
       </div>
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
-      </button>
-    </div>
+    </section>
   );
 };
 
