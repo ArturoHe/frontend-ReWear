@@ -2,7 +2,6 @@ import React from "react";
 import CategoryCard from "../CategoryCard";
 
 const Categories: React.FC = () => {
-  
   const categories = [
     {
       id: 1,
@@ -32,17 +31,23 @@ const Categories: React.FC = () => {
 
   return (
     <section className="categories">
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-      }} className="container">
-        <h2 className="section-title">Categorías</h2>
-        <div style={{
+      <div
+        style={{
           display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-around",
-          gap: "1rem",
-        }} className="categories-grid">
+          flexDirection: "column",
+        }}
+        className="container"
+      >
+        <h2 className="section-title">Categorías</h2>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around",
+            gap: "1rem",
+          }}
+          className="categories-grid"
+        >
           {categories.map((category) => (
             <CategoryCard key={category.id} category={category} />
           ))}

@@ -5,6 +5,11 @@ export interface User {
   description: string;
 }
 
+export interface Comment {
+  user_id: string;
+  comment: string;
+}
+
 export interface Product {
   id: number;
   name_product: string;

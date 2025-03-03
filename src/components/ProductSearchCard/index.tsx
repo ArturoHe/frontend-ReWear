@@ -22,7 +22,7 @@ function index({ image, title, description, price, id, quality }: Props) {
               src={image}
               alt=""
               style={{
-                height: "100%",
+                height: "15rem",
                 width: "100%",
                 borderRadius: "30px",
                 objectFit: "cover",
