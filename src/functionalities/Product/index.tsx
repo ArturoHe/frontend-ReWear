@@ -27,7 +27,6 @@ function index({ title }: Props) {
   const [productData, setproductData] = useState<ProductResponse | null>(null);
   const [userData, setUserData] = useState<User | null>(null);
   const [username, setUsername] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
   const fetchProduct = async (id: string) => {
     const response = await api.get(`/product/${id}`);
@@ -45,8 +44,6 @@ function index({ title }: Props) {
       setUserData(data);
     } catch (error) {
       console.error("Error al cargar los datos del usuario", error);
-    } finally {
-      setLoading(false);
     }
   };
 

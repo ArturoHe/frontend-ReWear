@@ -6,6 +6,7 @@ export interface User {
 }
 
 export interface Comment {
+  data: any;
   user_id: string;
   comment: string;
 }

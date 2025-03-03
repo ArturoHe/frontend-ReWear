@@ -20,7 +20,7 @@ function Index({ title }: Props) {
   const [products, setProducts] = useState<Product[]>([]);
   const [stars, setStars] = useState<number>();
   const [comments, setComments] = useState<
-    { buyer: string; commentText: string }[]
+    { buyer: string; commentText: string; image: string }[]
   >([]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function Index({ title }: Props) {
       const response = await api.get(`/user/${user}`);
       const data: User = response.data as User;
       console.log("token", sessionStorage.getItem("jwtToken"));
-      console.log(data);
+
       setUserData(data);
     } catch (error) {
       console.error("Error al cargar los datos del usuario", error);
@@ -44,26 +44,59 @@ function Index({ title }: Props) {
   };
 
   const fetchComments = async () => {
-    const responseComments = await api.get(`/reviews/${username}`);
-    console.log("responseComments", responseComments);
-    const commentsrating = responseComments.data as { averageRating: number };
-    const commentsData = responseComments.data as { reviews: string[] };
-    setStars(commentsrating.averageRating);
+    try {
+      const responseComments = await api.get(`/reviews/${username}`);
+      const { averageRating, reviews } = responseComments.data as {
+        averageRating: number;
+        reviews: Comment[];
+      };
 
-    return (commentsData.reviews as unknown as Comment[]).map((comment) => ({
-      buyer: comment.user_id,
-      commentText: comment.comment,
-    }));
+      setStars(averageRating);
+
+      const commentsWithUserData = await Promise.all(
+        reviews.map(async (comment: Comment) => {
+          try {
+            const response = await api.post(`/perfilexterno`, {
+              user_id: comment.user_id,
+            });
+            const data = response.data as User;
+
+            let userImage = "/default-profile.jpg"; // Imagen por defecto
+            try {
+              const responseImage = await api.get(`/user/${data.username}`);
+              const imageData = responseImage.data as { image_perfil?: string };
+              userImage = imageData.image_perfil || userImage;
+            } catch (error) {
+              console.error("Error fetching user image", error);
+            }
+
+            return {
+              buyer: data.username,
+              commentText: comment.comment,
+              image: userImage,
+            };
+          } catch (error) {
+            return {
+              buyer: comment.user_id,
+              commentText: comment.comment,
+              image: "/default-profile.jpg",
+            };
+          }
+        })
+      );
+
+      setComments(commentsWithUserData);
+    } catch (error) {
+      console.error("Error fetching comments", error);
+    }
   };
 
   const fetchProducts = async (): Promise<Product[]> => {
     const responseProducts = await api.post("/idexterno", { username });
-    console.log("sadasdsadsadsadsadsad", responseProducts.data);
 
     const payload = { seller_id: (responseProducts.data as { id: string }).id };
 
     const response = await api.post("/productsuser", payload);
-    console.log("response", response);
 
     return (response.data as Product[]).map((product) => ({
       id: product.id,
@@ -83,9 +116,9 @@ function Index({ title }: Props) {
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching products", err));
 
-    fetchComments()
-      .then((data) => setComments(data))
-      .catch((err) => console.error("Error fetching comments", err));
+    fetchComments().catch((err) =>
+      console.error("Error fetching comments", err)
+    );
   }, []);
 
   return (
@@ -135,10 +168,9 @@ function Index({ title }: Props) {
                 <h3> Opiniones </h3>
                 <hr className="pb-3" />
                 <div className="row row-cols-1" style={{ gap: "3rem" }}>
-                  <button onClick={fetchComments}>a</button>
                   {comments.map((comments) => (
                     <PersonalComments
-                      userImage="/parmero.jpeg"
+                      userImage={comments.image}
                       userName={comments.buyer}
                       comment={comments.commentText}
                     />
