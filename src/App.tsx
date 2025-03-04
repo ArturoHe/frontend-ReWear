@@ -81,21 +81,21 @@ function App() {
 
           <Route element={<PrivateRoute />}>
             <Route
-              path="/success"
+              path="/paymentsuccess"
               element={<CartSuccess title="ReWear | Edit" />}
             />
           </Route>
 
           <Route element={<PrivateRoute />}>
             <Route
-              path="/failure"
+              path="/paymenterror"
               element={<CartFail title="ReWear | Edit" />}
             />
           </Route>
 
           <Route element={<PrivateRoute />}>
             <Route
-              path="/pending"
+              path="/paymentpending"
               element={<CartPending title="ReWear | Edit" />}
             />
           </Route>
