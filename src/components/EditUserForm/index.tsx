@@ -2,8 +2,8 @@ import { useState } from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 import api from "../../api/axiosConfig";
-import ModalRate from "../ModalRate";
 import ButtonWarning from "../ButtonWarning";
+import ModalDelete from "../ModalDelete";
 
 type Props = {};
 
@@ -178,7 +178,7 @@ function EditUserForm({}: Props) {
               ></button>
             </div>
             <div className="modal-body">
-              <ModalRate idProduct="" idSeller="" key={0} />
+              <ModalDelete />
             </div>
           </div>
         </div>

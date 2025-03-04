@@ -1,10 +1,7 @@
 import api from "../../api/axiosConfig";
 import ButtonWarning from "../ButtonWarning";
 
-type Props = {
-  idSeller: string;
-  idProduct: string;
-};
+type Props = {};
 
 function index({}: Props) {
   const username = sessionStorage.getItem("username");
