@@ -19,12 +19,12 @@ function index({ name, price, owner, id, imageProduct }: Props) {
     userID !== null && owner !== undefined && parseInt(userID) === owner;
 
   const handleDelete = async () => {
-    const response = await api.delete(`/product/${id}`, {
+    await api.delete(`/product/${id}`, {
       headers: {
         Authorization: sessionStorage.getItem("jwtToken"),
       },
     });
-    alert(response);
+    alert("Producto eliminado");
     window.location.reload();
   };
 
