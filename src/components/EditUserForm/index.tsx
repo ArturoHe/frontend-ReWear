@@ -2,7 +2,6 @@ import { useState } from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 import api from "../../api/axiosConfig";
-import Button from "../Button";
 import ModalRate from "../ModalRate";
 import ButtonWarning from "../ButtonWarning";
 

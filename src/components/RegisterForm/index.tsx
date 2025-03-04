@@ -69,7 +69,7 @@ function RegisterForm({ onReturn }: Props) {
             type="text"
             className={`form-control ${styles.loginSlot}`}
             id="firstNameSlotRegister"
-            placeholder="Nombre(s)"
+            placeholder="Nombre(s)*"
           />
         </div>
 
@@ -81,7 +81,7 @@ function RegisterForm({ onReturn }: Props) {
             type="text"
             className={`form-control ${styles.loginSlot}`}
             id="lastNameSlotRegister"
-            placeholder="Apellido(s)"
+            placeholder="Apellido(s)*"
           />
         </div>
 
@@ -93,7 +93,7 @@ function RegisterForm({ onReturn }: Props) {
             type="phone"
             className={`form-control ${styles.loginSlot}`}
             id="phoneSlotRegister"
-            placeholder="Numero de telefono"
+            placeholder="Numero de telefono*"
           />
         </div>
 
@@ -105,7 +105,7 @@ function RegisterForm({ onReturn }: Props) {
             type="text"
             className={`form-control ${styles.loginSlot}`}
             id="userSlotRegister"
-            placeholder="Nombre de usuario"
+            placeholder="Nombre de usuario*"
           />
         </div>
 
@@ -117,7 +117,7 @@ function RegisterForm({ onReturn }: Props) {
             type="email"
             className={`form-control ${styles.loginSlot}`}
             id="emailSlotRegister"
-            placeholder="Correo Electrónico"
+            placeholder="Correo Electrónico*"
           />
         </div>
 
@@ -129,7 +129,7 @@ function RegisterForm({ onReturn }: Props) {
             type="password"
             className={`form-control ${styles.loginSlot}`}
             id="passwordSlotRegister"
-            placeholder="Contraseña"
+            placeholder="Contraseña*"
           />
         </div>
 
