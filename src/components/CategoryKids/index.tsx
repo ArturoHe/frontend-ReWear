@@ -20,7 +20,7 @@ function index({ title }: Props) {
   const fetchProducts = async () => {
     const payload = {
       name_product: "",
-      category: "niños",
+      category: "infantil",
       price: "",
       status: "",
     };
