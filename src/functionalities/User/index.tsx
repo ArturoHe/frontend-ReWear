@@ -127,7 +127,7 @@ function Index({ title }: Props) {
         <div className="row">
           <div className="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div
-              className="container-fluid mt-3 shadow p-3"
+              className="container-fluid mt-5 shadow p-3"
               style={{ borderRadius: "30px", position: "sticky", top: "1rem" }}
             >
               {loading ? (
@@ -137,6 +137,7 @@ function Index({ title }: Props) {
                   profileImage={userData.image_perfil || "/cuadrado.jpg"}
                   userName={userData.username}
                   description={userData.description}
+                  stars={stars}
                 />
               ) : (
                 <p>No se encontró el usuario.</p>

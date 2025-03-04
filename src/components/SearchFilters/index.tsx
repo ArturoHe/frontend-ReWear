@@ -69,10 +69,11 @@ function index({}: Props) {
       <hr />
 
       <select className="form-select my-3" aria-label="Default select example">
-        <option value="tipo de prenda">Tipo de prenda</option>
-        <option value="Camiseta">Camiseta</option>
-        <option value="Pantalon">Pantalon</option>
-        <option value="Sudadera">Sudadera</option>
+        <option value="">Tipo de prenda</option>
+        <option value="Infantil">Infantil</option>
+        <option value="Mujer">Mujer</option>
+        <option value="Hombre">Hombre</option>
+        <option value="Unisex">Unisex</option>
       </select>
 
       <ButtonAction text="AplicarFiltros" />

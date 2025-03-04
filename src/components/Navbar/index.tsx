@@ -83,16 +83,24 @@ function index({}: Props) {
           <nav className={`main-nav ${isMenuOpen ? "active" : ""}`}>
             {logged ? (
               <>
-                <Link to="/history" className="nav-item">
-                  🛍️ Mis Compras
-                </Link>
-                <Link to="/cart" className="nav-item">
-                  🛒 Carrito
-                </Link>
-                <Link to={`/user/${userName}`} className="nav-item">
-                  👤 Mi Perfil
-                </Link>
-                <ButtonAction text="Cerrar Sesión" onClick={handleClose} />
+                <div className="d-block d-sm-none">
+                  <Link to="/history" className="nav-item">
+                    🛍️ Mis Compras
+                  </Link>
+                </div>
+                <div className="d-block d-sm-none">
+                  <Link to="/cart" className="nav-item">
+                    🛒 Carrito
+                  </Link>
+                </div>
+                <div className="d-block d-sm-none">
+                  <Link to={`/user/${userName}`} className="nav-item">
+                    👤 Mi Perfil
+                  </Link>
+                </div>
+                <div className="">
+                  <ButtonAction text="Cerrar Sesión" onClick={handleClose} />
+                </div>
               </>
             ) : (
               <>

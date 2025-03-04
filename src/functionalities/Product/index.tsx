@@ -27,6 +27,7 @@ function index({ title }: Props) {
   const [productData, setproductData] = useState<ProductResponse | null>(null);
   const [userData, setUserData] = useState<User | null>(null);
   const [username, setUsername] = useState<string | null>(null);
+  const [stars, setStars] = useState<number>();
 
   const fetchProduct = async (id: string) => {
     const response = await api.get(`/product/${id}`);
@@ -34,6 +35,19 @@ function index({ title }: Props) {
 
     setUsername(data.username);
     setproductData(data);
+  };
+
+  const fetchStars = async () => {
+    try {
+      const responseComments = await api.get(`/reviews/${username}`);
+      console.log("responseComments", responseComments);
+      const { averageRating } = responseComments.data as {
+        averageRating: number;
+        reviews: Comment[];
+      };
+
+      setStars(averageRating);
+    } catch (error) {}
   };
 
   const fetchUser = async (user: string) => {
@@ -89,8 +103,11 @@ function index({ title }: Props) {
     if (id) {
       fetchProduct(id);
       fetchUser(username || "");
+      fetchStars();
+
+      console.log("aaaaaaaaaaaaaaaaaaaaa", stars);
     }
-  }, [id, username]);
+  }, [id, username, stars]);
 
   return (
     <>
@@ -133,6 +150,7 @@ function index({ title }: Props) {
                 <UserPanelLeft
                   profileImage={userData?.image_perfil || "/cuadrado.jpg"}
                   userName={productData?.username || ""}
+                  stars={stars}
                 />
               </div>
             </div>
