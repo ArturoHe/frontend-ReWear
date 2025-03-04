@@ -1,21 +1,35 @@
 import ButtonAction from "../ButtonAction";
 import Button from "../Button";
 import ModalRate from "../ModalRate";
+import api from "../../api/axiosConfig";
 
 type Props = {
-  id: number;
+  id: string;
   image: string;
   title: string;
   description: string;
   price: number;
   date: string;
+  seller: string;
 };
 
-function index({ image, title, description, price, date }: Props) {
-  const handleInfo = () => {
-    console.log("Info");
+function Index({ image, title, description, price, date, id, seller }: Props) {
+  // Efecto para monitorear el cambio de estado
 
-    window.location.href = "/user/test";
+  const handleInfo = async () => {
+    console.log("Info");
+    console.log("ID:", id);
+    console.log("Seller:", seller);
+
+    try {
+      const payload = { user_id: seller };
+      const response = await api.post("/perfilexterno", payload);
+
+      const data = response.data as { username: string };
+      window.location.href = `/user/${data.username}`;
+    } catch (error) {
+      console.error("Error fetching seller info:", error);
+    }
   };
 
   return (
@@ -31,7 +45,7 @@ function index({ image, title, description, price, date }: Props) {
                 src={image}
                 alt=""
                 style={{
-                  height: "100%",
+                  height: "15rem",
                   width: "100%",
                   borderRadius: "30px",
                   objectFit: "cover",
@@ -52,7 +66,7 @@ function index({ image, title, description, price, date }: Props) {
                 <ButtonAction
                   text="Calificar Vendedor"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
+                  data-bs-target="#exampleModalRate"
                 />
               </div>
             </div>
@@ -62,7 +76,7 @@ function index({ image, title, description, price, date }: Props) {
 
       <div
         className="modal fade"
-        id="exampleModal"
+        id="exampleModalRate"
         tabIndex={-1}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -81,7 +95,7 @@ function index({ image, title, description, price, date }: Props) {
               ></button>
             </div>
             <div className="modal-body">
-              <ModalRate idProduct="" idSeller="" key={0} />
+              <ModalRate idProduct={id} idSeller={seller} key={id} />
             </div>
           </div>
         </div>
@@ -90,4 +104,4 @@ function index({ image, title, description, price, date }: Props) {
   );
 }
 
-export default index;
+export default Index;
