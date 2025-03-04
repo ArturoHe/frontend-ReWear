@@ -1,22 +1,28 @@
+import { useState } from "react";
 import ButtonAction from "../ButtonAction";
 
-type Props = {};
+const Index = () => {
+  const [rangePrice, setRangePrice] = useState(1000000);
+  const [rangeQuality, setRangeQuality] = useState(10);
+  const [filterType, setFilterType] = useState("");
 
-function index({}: Props) {
-  const handleRangePrice = () => {
-    const rangeValue1 = (
-      document.getElementById("customRange1") as HTMLInputElement
-    ).value;
-    (document.getElementById("rangeValue1") as HTMLSpanElement).innerText =
-      rangeValue1;
+  const handleRangePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRangePrice(Number(event.target.value));
   };
 
-  const handleRangeCuality = () => {
-    const rangeValue2 = (
-      document.getElementById("customRange2") as HTMLInputElement
-    ).value;
-    (document.getElementById("rangeValue2") as HTMLSpanElement).innerText =
-      rangeValue2;
+  const handleRangeQuality = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRangeQuality(Number(event.target.value));
+  };
+
+  const handleFilter = () => {
+    console.log("Filtrando...");
+    console.log("Precio máximo:", rangePrice);
+    console.log("Estado:", rangeQuality);
+    console.log("Tipo de prenda:", filterType);
+
+    sessionStorage.setItem("rangePrice", String(rangePrice));
+    sessionStorage.setItem("rangeQuality", String(rangeQuality));
+    sessionStorage.setItem("filterType", filterType);
   };
 
   return (
@@ -39,16 +45,17 @@ function index({}: Props) {
           max="1000000"
           step="1000"
           id="customRange1"
+          value={rangePrice}
           onChange={handleRangePrice}
         />
         <div>
-          Valor Menor o igual a: <span id="rangeValue1">1000000</span>
+          Valor Menor o igual a: <span>{rangePrice}</span>
         </div>
       </div>
 
       <hr />
 
-      <div id="searchFilterCuality">
+      <div id="searchFilterQuality">
         <label htmlFor="customRange2" className="form-label">
           Estado de la prenda
         </label>
@@ -58,17 +65,23 @@ function index({}: Props) {
           min="0"
           max="10"
           id="customRange2"
-          defaultValue={10}
-          onChange={handleRangeCuality}
+          value={rangeQuality}
+          onChange={handleRangeQuality}
         />
         <div>
-          Estado: <span id="rangeValue2">10</span>
+          Estado: <span>{rangeQuality}</span>
         </div>
       </div>
 
       <hr />
 
-      <select className="form-select my-3" aria-label="Default select example">
+      <select
+        className="form-select my-3"
+        aria-label="Default select example"
+        id="searchFilterType"
+        value={filterType}
+        onChange={(e) => setFilterType(e.target.value)}
+      >
         <option value="">Tipo de prenda</option>
         <option value="Infantil">Infantil</option>
         <option value="Mujer">Mujer</option>
@@ -76,9 +89,9 @@ function index({}: Props) {
         <option value="Unisex">Unisex</option>
       </select>
 
-      <ButtonAction text="AplicarFiltros" />
+      <ButtonAction text="Aplicar Filtros" onClick={handleFilter} />
     </div>
   );
-}
+};
 
-export default index;
+export default Index;
