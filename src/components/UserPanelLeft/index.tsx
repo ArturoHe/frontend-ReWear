@@ -13,7 +13,7 @@ type Props = {
   stars?: number;
 };
 
-function index({ profileImage, userName, description }: Props) {
+function index({ profileImage, userName, description, stars = 0 }: Props) {
   const userLogged = sessionStorage.getItem("username");
   const isSelf = userName === userLogged;
 
@@ -30,6 +30,9 @@ function index({ profileImage, userName, description }: Props) {
   if (!description) {
     description = "No hay descripción";
   }
+
+  // Truncar el valor de las estrellas
+  const starCount = Math.trunc(stars);
 
   return (
     <div className="container text-center py-3">
@@ -55,16 +58,14 @@ function index({ profileImage, userName, description }: Props) {
               <p className="py-3">{description}</p>
             </div>
 
-            <div
-              className="row mx-5 pb-4"
-              style={{ fontSize: "1.5rem", color: "gold" }}
-            >
+            <div className="row mx-5 pb-4" style={{ fontSize: "1.5rem" }}>
               <span>
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
+                {[...Array(5)].map((_, index) => (
+                  <FaStar
+                    key={index}
+                    color={index < starCount ? "gold" : "gray"}
+                  />
+                ))}
               </span>
             </div>
           </div>

@@ -19,6 +19,10 @@ import RecoverPass from "./functionalities/RecoverPass";
 import CartFail from "./functionalities/CartFail";
 import CartPending from "./functionalities/CartPending";
 import CartSuccess from "./functionalities/CartSuccess";
+import CategoryKids from "./components/CategoryKids";
+import CategoryWoman from "./components/CategoryWoman";
+import CategoryMan from "./components/CategoryMan";
+import CategoryUnisex from "./components/CategoryUnisex";
 
 function App() {
   return (
@@ -35,6 +39,22 @@ function App() {
         {/* Rutas con Layout */}
         <Route element={<Layout />}>
           <Route path="/home" element={<Home title="ReWear | Inicio" />} />
+          <Route
+            path="/category/infantil"
+            element={<CategoryKids title="ReWear | Inicio" />}
+          />
+          <Route
+            path="/category/mujer"
+            element={<CategoryWoman title="ReWear | Inicio" />}
+          />
+          <Route
+            path="/category/hombre"
+            element={<CategoryMan title="ReWear | Inicio" />}
+          />
+          <Route
+            path="/category/unisex"
+            element={<CategoryUnisex title="ReWear | Inicio" />}
+          />
           <Route
             path="/user/:username"
             element={<User title="ReWear | User" />}

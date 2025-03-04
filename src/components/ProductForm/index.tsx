@@ -87,11 +87,10 @@ function LoginForm({}: Props) {
           name="category"
         >
           <option value="">-Categoria-</option>
-          <option value="Casual">Casual</option>
-          <option value="Deportiva">Deportiva</option>
-          <option value="Formal">Formal</option>
-          <option value="Urbana">Urbana</option>
-          <option value="Vintage">Vintage</option>
+          <option value="Infantil">Infantil</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Unisex">Unisex</option>
         </select>
       </div>
       <div className="my-3">

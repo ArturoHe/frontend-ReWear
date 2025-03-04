@@ -34,6 +34,7 @@ function Index({ title }: Props) {
             const { data } = await api.get<{
               name_product: string;
               description: string;
+              image_path: string;
               price: number;
             }>(`/product/${product.product_id}`);
 
@@ -42,6 +43,7 @@ function Index({ title }: Props) {
               name_product: data.name_product,
               description: data.description,
               price: data.price,
+              image_path: data.image_path,
             };
           } catch (error) {
             console.log("Error fetching product:", error);
@@ -106,7 +108,7 @@ function Index({ title }: Props) {
               <CardCart
                 key={product.product_id}
                 id={product.product_id}
-                image="https://softmanagement.com.co/wp-content/uploads/2024/10/placeholder.png"
+                image={product.image_path}
                 title={product.name_product}
                 description={product.description}
                 price={Number(product.price).toLocaleString("es-CO")}
