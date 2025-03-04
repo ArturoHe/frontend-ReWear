@@ -2,7 +2,8 @@ import { useState } from "react";
 import ButtonAction from "../ButtonAction";
 import styles from "./style.module.css";
 import api from "../../api/axiosConfig";
-import Button from "../Button";
+import ModalRate from "../ModalRate";
+import ButtonWarning from "../ButtonWarning";
 
 type Props = {};
 
@@ -42,19 +43,6 @@ function EditUserForm({}: Props) {
 
     console.log(file);
     console.log("Formulario enviado");
-  };
-
-  const handleDelete = async () => {
-    try {
-      await api.delete("/eliminarperfil", {
-        headers: { Authorization: sessionStorage.getItem("jwtToken") },
-      });
-      alert("Usuario eliminado");
-      sessionStorage.clear();
-      window.location.href = "/home";
-    } catch (error) {
-      console.log("Error al eliminar usuario", error);
-    }
   };
 
   const handleSubmitPass = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -162,7 +150,38 @@ function EditUserForm({}: Props) {
       </div>
 
       <div className="container text-center my-5">
-        <Button text="Eliminar cuenta" onClick={handleDelete} />
+        <ButtonWarning
+          text="Eliminar cuenta"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        />
+      </div>
+
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex={-1}
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                Eliminar Cuenta
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <ModalRate idProduct="" idSeller="" key={0} />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

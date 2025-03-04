@@ -1,7 +1,5 @@
-import { FaStar } from "react-icons/fa";
-
-import { useState } from "react";
-import ButtonAction from "../ButtonAction";
+import api from "../../api/axiosConfig";
+import ButtonWarning from "../ButtonWarning";
 
 type Props = {
   idSeller: string;
@@ -9,62 +7,56 @@ type Props = {
 };
 
 function index({}: Props) {
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const username = sessionStorage.getItem("username");
+
+  const handleDelete = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    console.log("rating", rating);
-    console.log("description", event.currentTarget.description.value);
-    //window.location.reload();
+
+    const userConfirm = document.getElementById(
+      "userConfirm"
+    ) as HTMLInputElement;
+
+    if (userConfirm.value !== username) {
+      alert("El nombre de usuario no coincide");
+      return;
+    } else {
+      try {
+        await api.delete("/eliminarperfil", {
+          headers: { Authorization: sessionStorage.getItem("jwtToken") },
+        });
+        alert("Usuario eliminado");
+        sessionStorage.clear();
+        window.location.href = "/home";
+      } catch (error) {
+        console.log("Error al eliminar usuario", error);
+      }
+    }
   };
 
-  const [rating, setRating] = useState(Number);
-  const [rateColor] = useState(null);
-
   return (
-    <div className="container text-center mt-5">
-      <div>
-        <h1>Califica tu experiencia con el Vendedor</h1>
-      </div>
+    <div>
+      <form onSubmit={handleDelete}>
+        <div>
+          <h1 style={{ fontSize: "1.5rem", textAlign: "center", color: "red" }}>
+            Recuerda que la eliminacion de cuenta no se puede deshacer.
+          </h1>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="mt-5">
-          {[...Array(5)].map((_, index) => {
-            const ratingValue = index + 1;
-            return (
-              <div key={ratingValue} style={{ display: "inline-block" }}>
-                <label>
-                  <input
-                    type="radio"
-                    name="rate"
-                    value={ratingValue}
-                    style={{ display: "none" }}
-                  />
-                  <FaStar
-                    onClick={() => setRating(ratingValue)}
-                    size={"3rem"}
-                    color={
-                      ratingValue <= (rateColor || rating)
-                        ? "#ffc107"
-                        : "#e4e5e9"
-                    }
-                  />
-                </label>
-              </div>
-            );
-          })}
+        <hr />
+
+        <div>
+          <p>
+            Escribe tu nombre de usuario para confirmar la eliminacion de la
+            cuenta
+          </p>
+        </div>
+
+        <div className="d-flex justify-content-center">
+          <input type="text" placeholder={`${username}`} id="userConfirm" />
         </div>
 
         <div className="mt-5">
-          <textarea
-            name="description"
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows={3}
-            placeholder="Dejanos saber cual es tu opinion acerca de este vendedor"
-          ></textarea>
-        </div>
-
-        <div className="mt-5">
-          <ButtonAction text="Enviar" type="submit" />
+          <ButtonWarning type="submit" text="Eliminar Cuenta" />
         </div>
       </form>
     </div>
