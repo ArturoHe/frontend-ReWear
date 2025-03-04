@@ -23,6 +23,7 @@ import CategoryKids from "./components/CategoryKids";
 import CategoryWoman from "./components/CategoryWoman";
 import CategoryMan from "./components/CategoryMan";
 import CategoryUnisex from "./components/CategoryUnisex";
+import TyC from "./components/TyC";
 
 function App() {
   return (
@@ -41,20 +42,22 @@ function App() {
           <Route path="/home" element={<Home title="ReWear | Inicio" />} />
           <Route
             path="/category/infantil"
-            element={<CategoryKids title="ReWear | Inicio" />}
+            element={<CategoryKids title="ReWear | Infantil" />}
           />
           <Route
             path="/category/mujer"
-            element={<CategoryWoman title="ReWear | Inicio" />}
+            element={<CategoryWoman title="ReWear | Mujer" />}
           />
+
           <Route
             path="/category/hombre"
-            element={<CategoryMan title="ReWear | Inicio" />}
+            element={<CategoryMan title="ReWear | Hombre" />}
           />
           <Route
             path="/category/unisex"
-            element={<CategoryUnisex title="ReWear | Inicio" />}
+            element={<CategoryUnisex title="ReWear | Unisex" />}
           />
+          <Route path="/TyC" element={<TyC title="ReWear | TyC" />} />
           <Route
             path="/user/:username"
             element={<User title="ReWear | User" />}
@@ -82,21 +85,21 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route
               path="/paymentsuccess"
-              element={<CartSuccess title="ReWear | Edit" />}
+              element={<CartSuccess title="ReWear | Pago exitoso" />}
             />
           </Route>
 
           <Route element={<PrivateRoute />}>
             <Route
               path="/paymenterror"
-              element={<CartFail title="ReWear | Edit" />}
+              element={<CartFail title="ReWear | Error de Pago" />}
             />
           </Route>
 
           <Route element={<PrivateRoute />}>
             <Route
               path="/paymentpending"
-              element={<CartPending title="ReWear | Edit" />}
+              element={<CartPending title="ReWear | Pago pendiente" />}
             />
           </Route>
 
@@ -110,20 +113,14 @@ function App() {
             element={<Search title="ReWear | Search" />}
           />
 
-          <Route
-            path="/cart"
-            element={<Cart title="ReWear | Configuración" />}
-          />
+          <Route path="/cart" element={<Cart title="ReWear | Carrito" />} />
 
           <Route
             path="/history"
-            element={<History title="ReWear | Configuración" />}
+            element={<History title="ReWear | Historial" />}
           />
 
-          <Route
-            path="*"
-            element={<ErrorPage title="ReWear | Configuración" />}
-          />
+          <Route path="*" element={<ErrorPage title="ReWear | 404" />} />
         </Route>
       </Routes>
     </Router>

@@ -15,9 +15,7 @@ const Footer = () => {
                 <li>
                   <a href="#quienes-somos">¿Quiénes Somos?</a>
                 </li>
-                <li>
-                  <a href="#que-queremos">¿Qué Queremos?</a>
-                </li>
+
                 <li>
                   <a href="#mision">Misión</a>
                 </li>
@@ -31,13 +29,10 @@ const Footer = () => {
               <h3>Legal</h3>
               <ul>
                 <li>
-                  <a href="#">Términos y Condiciones</a>
+                  <a href="/TyC">Términos y Condiciones</a>
                 </li>
                 <li>
-                  <a href="#">Política de Privacidad</a>
-                </li>
-                <li>
-                  <a href="#">Cookies</a>
+                  <a href="/TyC">Política de Privacidad</a>
                 </li>
               </ul>
             </div>
