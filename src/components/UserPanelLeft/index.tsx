@@ -5,6 +5,7 @@ import Button from "../Button";
 
 import styles from "./style.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import ButtonWarning from "../ButtonWarning";
 
 type Props = {
   profileImage: string;
@@ -56,6 +57,10 @@ function index({ profileImage, userName, description, stars = 0 }: Props) {
 
             <div>
               <p className="py-3">{description}</p>
+            </div>
+
+            <div>
+              <ButtonWarning text="Reportar Usuario" />
             </div>
 
             <div className="row mx-5 pb-4" style={{ fontSize: "1.5rem" }}>

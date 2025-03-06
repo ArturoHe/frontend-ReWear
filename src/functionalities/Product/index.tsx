@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Toast } from "bootstrap";
 import ButtonAction from "../../components/ButtonAction";
+import ButtonWarning from "../../components/ButtonWarning";
 
 type Props = { title: string };
 
@@ -127,10 +128,13 @@ function index({ title }: Props) {
                 <div className="container my-1">
                   <div className="d-flex flex-row justify-content-between mb-4">
                     {!isSelf ? (
-                      <ButtonAction
-                        text="Agregar Al Carrito"
-                        onClick={handleCart}
-                      />
+                      <div>
+                        <ButtonAction
+                          text="Agregar Al Carrito"
+                          onClick={handleCart}
+                        />
+                        <ButtonWarning text="Reportar Publicación" />
+                      </div>
                     ) : (
                       <Button text="Editar Producto" onClick={handleEdit} />
                     )}

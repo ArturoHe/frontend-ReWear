@@ -30,7 +30,7 @@ function LandingPage({}: Props) {
                 className="card text-bg-dark mb-3"
                 style={{ borderRadius: "30px" }}
               >
-                <div className="card-header">Mision</div>
+                <div className="card-header">Misión</div>
                 <div className="card-body">
                   <p>
                     Transformar la forma en que los colombianos perciben y

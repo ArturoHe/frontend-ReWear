@@ -86,7 +86,7 @@ function LoginForm({}: Props) {
           aria-label="Default select example"
           name="category"
         >
-          <option value="">-Categoria-</option>
+          <option value="">-Categoría-</option>
           <option value="Infantil">Infantil</option>
           <option value="Mujer">Mujer</option>
           <option value="Hombre">Hombre</option>
@@ -111,7 +111,7 @@ function LoginForm({}: Props) {
           className="form-control"
           id="exampleFormControlTextarea1"
           rows={3}
-          placeholder="Descripcion"
+          placeholder="Descripción"
         ></textarea>
       </div>
       <div className="my-3" id="searchFilterCuality">

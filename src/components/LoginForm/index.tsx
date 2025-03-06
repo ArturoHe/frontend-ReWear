@@ -69,7 +69,7 @@ function LoginForm({ onReturn, onRecoverPassword }: Props) {
           type="text"
           className={`form-control ${styles.loginSlot}`}
           id="emailSlotLogin"
-          placeholder="Correo Electronico o Usuario"
+          placeholder="Correo Electrónico o Usuario"
         />
       </div>
       <div className="my-3">

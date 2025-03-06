@@ -9,7 +9,7 @@ function index({ title }: Props) {
   return (
     <div className="modal-body text-start container mt-5">
       <h1>
-        Política de Tratamiento de Datos Personales - Terminos y condiciones
+        Política de Tratamiento de Datos Personales - Términos y condiciones
       </h1>
 
       <p>

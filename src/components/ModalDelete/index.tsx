@@ -35,7 +35,7 @@ function index({}: Props) {
       <form onSubmit={handleDelete}>
         <div>
           <h1 style={{ fontSize: "1.5rem", textAlign: "center", color: "red" }}>
-            Recuerda que la eliminacion de cuenta no se puede deshacer.
+            Recuerda que la eliminación de cuenta no se puede deshacer.
           </h1>
         </div>
 
@@ -43,7 +43,7 @@ function index({}: Props) {
 
         <div>
           <p>
-            Escribe tu nombre de usuario para confirmar la eliminacion de la
+            Escribe tu nombre de usuario para confirmar la eliminación de la
             cuenta
           </p>
         </div>

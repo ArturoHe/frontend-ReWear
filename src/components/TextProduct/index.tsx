@@ -17,10 +17,10 @@ function index({ productName, price, category, description, quality }: Props) {
         Calidad: {quality}
       </h4>
       <h5 className="my-3" style={{ fontSize: "1rem" }}>
-        Categoria: {category}
+        Categoría: {category}
       </h5>
       <h5 className="my-3" style={{ fontSize: "1rem" }}>
-        Descripcion:
+        Descripción:
         <div className="mt-2">
           <p
             style={{

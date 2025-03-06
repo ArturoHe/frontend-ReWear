@@ -23,13 +23,13 @@ function LandingPage({}: Props) {
             >
               ¿Ropa que ya no usas?
               <br />
-              ¡Vendela en ReWear!
+              ¡Véndela en ReWear!
             </h1>
           </div>
 
           <div className="text-center mt-5 pt-2 d-none d-sm-block">
             <h2 style={{ fontSize: "1.5rem" }}>
-              Cuida el planeta y obten dinero en el proceso.{" "}
+              Cuida el planeta y obtén dinero en el proceso.{" "}
             </h2>
           </div>
 
