@@ -93,7 +93,7 @@ function RegisterForm({ onReturn }: Props) {
             type="phone"
             className={`form-control ${styles.loginSlot}`}
             id="phoneSlotRegister"
-            placeholder="Numero de telefono*"
+            placeholder="Número de teléfono*"
           />
         </div>
 
@@ -185,7 +185,7 @@ function RegisterForm({ onReturn }: Props) {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Terminos y condiciones de uso - Rewear
+                Términos y condiciones de uso - Rewear
               </h1>
               <button
                 type="button"

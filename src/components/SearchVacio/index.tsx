@@ -13,7 +13,7 @@ function index({}: Props) {
           }}
         >
           <h1>
-            Esta seccion está vacia actualmente, esperamos tener muy pronto los
+            Esta sección está vacía actualmente, esperamos tener muy pronto los
             productos que buscas
           </h1>
         </div>
